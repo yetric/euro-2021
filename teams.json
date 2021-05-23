@@ -1,28 +1,100 @@
 {
   "teams": {
-    "TUR": {},
-    "ITA": {},
-    "WAL": {},
-    "SUI": {},
-    "DEN": {},
-    "FIN": {},
-    "BEL": {},
-    "RUS": {},
-    "NED": {},
-    "UKR": {},
-    "AUS": {},
-    "NMC": {},
-    "ENG": {},
-    "CRO": {},
-    "SCO": {},
-    "CZH": {},
-    "ESP": {},
-    "SWE": {},
-    "POL": {},
-    "SLO": {},
-    "HUN": {},
-    "POR": {},
-    "FRA": {},
-    "GER": {}
+    "TUR": {
+      "players": [],
+      "coach": []
+    },
+    "ITA": {
+      "players": [],
+      "coach": []
+    },
+    "WAL": {
+      "players": [],
+      "coach": []
+    },
+    "SUI": {
+      "players": [],
+      "coach": []
+    },
+    "DEN": {
+      "players": [],
+      "coach": []
+    },
+    "FIN": {
+      "players": [],
+      "coach": []
+    },
+    "BEL": {
+      "players": [],
+      "coach": []
+    },
+    "RUS": {
+      "players": [],
+      "coach": []
+    },
+    "NED": {
+      "players": [],
+      "coach": []
+    },
+    "UKR": {
+      "players": [],
+      "coach": []
+    },
+    "AUS": {
+      "players": [],
+      "coach": []
+    },
+    "NMC": {
+      "players": [],
+      "coach": []
+    },
+    "ENG": {
+      "players": [],
+      "coach": []
+    },
+    "CRO": {
+      "players": [],
+      "coach": []
+    },
+    "SCO": {
+      "players": [],
+      "coach": []
+    },
+    "CZH": {
+      "players": [],
+      "coach": []
+    },
+    "ESP": {
+      "players": [],
+      "coach": []
+    },
+    "SWE": {
+      "players": [],
+      "coach": []
+    },
+    "POL": {
+      "players": [],
+      "coach": []
+    },
+    "SLO": {
+      "players": [],
+      "coach": []
+    },
+    "HUN": {
+      "players": [],
+      "coach": []
+    },
+    "POR": {
+      "players": [],
+      "coach": []
+    },
+    "FRA": {
+      "players": [],
+      "coach": []
+    },
+    "GER": {
+      "players": [],
+      "coach": []
+    }
   }
 }
