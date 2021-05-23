@@ -1,1 +1,59 @@
-{}
+{
+  "stadiums": [
+    {
+      "city": "Amsterdam",
+      "country": "Netherlands",
+      "arena": "Johan Cruijff Arena"
+    },
+    {
+      "city": "Baku",
+      "country": "Azerbaijan",
+      "arena": "Baku Olympic Stadium"
+    },
+    {
+      "city": "Bucharest",
+      "country": "Romania",
+      "arena": "National Arena Bucharest"
+    },
+    {
+      "city": "Budapest",
+      "country": "Hungary",
+      "arena": "Puskás Arena"
+    },
+    {
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "arena": "Parken Stadium"
+    },
+    {
+      "city": "Glasgow",
+      "country": "Scotland",
+      "arena": "Hampden Park"
+    },
+    {
+      "city": "London",
+      "country": "England",
+      "arena": "Wembley Stadium"
+    },
+    {
+      "city": "Munich",
+      "country": "Germany",
+      "arena": "Football Arena Munich"
+    },
+    {
+      "city": "Rome",
+      "country": "Italy",
+      "arena": "Olimpico in Rome"
+    },
+    {
+      "city": "Saint Petersburg",
+      "country": "Russia",
+      "arena": "Saint Petersburg Stadium"
+    },
+    {
+      "city": "Seville",
+      "country": "Spain",
+      "arena": "Estadio La Cartuja"
+    }
+  ]
+}
