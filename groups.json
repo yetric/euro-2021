@@ -1,0 +1,70 @@
+{
+  "groups": [
+    {
+      "id": "A",
+      "home":  [
+        "Rome",
+        "Baku"
+      ],
+      "teams": [
+        "TUR", "ITA", "WAL", "SWI"
+      ],
+      "hosts": ["ITA"]
+    },
+    {
+      "id": "B",
+      "home":  [
+        "Copenhagen",
+        "St Petersburg"
+      ],
+      "teams": [
+        "DEN", "FIN", "BEL", "RUS"
+      ],
+      "hosts": ["DEN", "RUS"]
+    },
+    {
+      "id": "C",
+      "home":  [
+        "Amsterdam",
+        "Bucharest"
+      ],
+      "teams": [
+        "NED", "UKR", "AUS", "NMC"
+      ],
+      "hosts": ["NED"]
+    },
+    {
+      "id": "D",
+      "home":  [
+        "London",
+        "Glasgow"
+      ],
+      "teams": [
+        "ENG", "CRO", "SCO", "CZH"
+      ],
+      "hosts": ["ENG", "SCO"]
+    },
+    {
+      "id": "E",
+      "home":  [
+        "Seville",
+        "St Petersburg"
+      ],
+      "teams": [
+        "ESP", "SWE", "POL", "SLO"
+      ],
+      "hosts": ["ESP"]
+    },
+    {
+      "id": "F",
+      "home":  [
+        "Munich",
+        "Budapest"
+      ],
+      "teams": [
+        "HUN", "POR", "FRA", "GER"
+      ],
+      "hosts": ["HUN", "GER"]
+    }
+  ]
+}
