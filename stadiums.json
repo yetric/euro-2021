@@ -5,21 +5,33 @@
       "country": "Netherlands",
       "arena": "Johan Cruijff Arena",
       "short": "cruijff",
-      "capacity": 54990
+      "capacity": 54990,
+      "location": {
+        "lat": 52.314353049999994,
+        "lng": 4.942843089053988
+      }
     },
     {
       "city": "Baku",
       "country": "Azerbaijan",
       "arena": "Baku Olympic Stadium",
       "short": "baku-olympic",
-      "capacity": 68700
+      "capacity": 68700,
+      "location": {
+        "lat":  40.429913,
+        "lng":49.919163
+      }
     },
     {
       "city": "Bucharest",
       "country": "Romania",
       "arena": "National Arena Bucharest",
       "short": "national-arena-bucharest",
-      "capacity": 55600
+      "capacity": 55600,
+      "location": {
+        "lat":  44.437149,
+        "lng":26.151758
+      }
     },
     {
       "city": "Budapest",
