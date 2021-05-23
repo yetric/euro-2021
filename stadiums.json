@@ -3,57 +3,79 @@
     {
       "city": "Amsterdam",
       "country": "Netherlands",
-      "arena": "Johan Cruijff Arena"
+      "arena": "Johan Cruijff Arena",
+      "short": "cruijff",
+      "capacity": 54990
     },
     {
       "city": "Baku",
       "country": "Azerbaijan",
-      "arena": "Baku Olympic Stadium"
+      "arena": "Baku Olympic Stadium",
+      "short": "baku-olympic",
+      "capacity": 68700
     },
     {
       "city": "Bucharest",
       "country": "Romania",
-      "arena": "National Arena Bucharest"
+      "arena": "National Arena Bucharest",
+      "short": "national-arena-bucharest",
+      "capacity": 55600
     },
     {
       "city": "Budapest",
       "country": "Hungary",
-      "arena": "Puskás Arena"
+      "arena": "Puskás Arena",
+      "short": "puskas",
+      "capacity": 67889
     },
     {
       "city": "Copenhagen",
       "country": "Denmark",
-      "arena": "Parken Stadium"
+      "arena": "Parken Stadium",
+      "short": "parken",
+      "capacity": 38065
     },
     {
       "city": "Glasgow",
       "country": "Scotland",
-      "arena": "Hampden Park"
+      "arena": "Hampden Park",
+      "short": "hampden-park",
+      "capacity": 52063
     },
     {
       "city": "London",
       "country": "England",
-      "arena": "Wembley Stadium"
+      "arena": "Wembley Stadium",
+      "short": "wembley",
+      "capacity": 90000
     },
     {
       "city": "Munich",
       "country": "Germany",
-      "arena": "Football Arena Munich"
+      "arena": "Football Arena Munich",
+      "short": "football-arena-munich",
+      "capacity": 75000
     },
     {
       "city": "Rome",
       "country": "Italy",
-      "arena": "Olimpico in Rome"
+      "arena": "Olimpico in Rome",
+      "short": "olimpico",
+      "capacity": 72698
     },
     {
       "city": "Saint Petersburg",
       "country": "Russia",
-      "arena": "Saint Petersburg Stadium"
+      "arena": "Saint Petersburg Stadium",
+      "short": "saint-petersburg-stadium",
+      "capacity": 68134
     },
     {
       "city": "Seville",
       "country": "Spain",
-      "arena": "Estadio La Cartuja"
+      "arena": "Estadio La Cartuja",
+      "short": "estadio-la-cartuja",
+      "capacity": 57619
     }
   ]
 }
