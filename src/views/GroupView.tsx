@@ -6,6 +6,8 @@ import { getGroupByIDSelector } from "store/selectors";
 import { groupsStateSelector } from "store/slices/groupsSlice";
 import { teamsStateSelector } from "store/slices/teamsSlice";
 
+import {Helmet} from "react-helmet";
+
 export const GroupView = (): JSX.Element => {
     const { groupId } = useParams<{ groupId: string }>();
     const groupState = useSelector(groupsStateSelector);
@@ -18,6 +20,9 @@ export const GroupView = (): JSX.Element => {
 
     return (
         <div>
+            <Helmet>
+                <title>Group {groupId} - Euro 2020 - Fotbollsfeber.se</title>
+            </Helmet>
             <h2>Group {groupId}</h2>
             <p>Lorem ipsum info about the group</p>
             <h3>Standings</h3>

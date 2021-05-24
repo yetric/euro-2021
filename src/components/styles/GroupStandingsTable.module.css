@@ -1,0 +1,19 @@
+.table {
+
+}
+
+.table th {
+    font-weight: 400;
+    text-align: right;
+    border-bottom-color: inherit !important;
+}
+
+.table td {
+    font-weight: 300;
+    font-size: 14px;
+    text-align: right;
+}
+
+.table td:first-child, .table th:first-child {
+    text-align: left;
+}
