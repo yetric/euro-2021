@@ -7,6 +7,7 @@ import { groupsStateSelector } from "store/slices/groupsSlice";
 import { teamsStateSelector } from "store/slices/teamsSlice";
 
 import {Helmet} from "react-helmet";
+import { TeamIcon } from "../components/TeamIcon";
 
 export const GroupView = (): JSX.Element => {
     const { groupId } = useParams<{ groupId: string }>();
@@ -35,13 +36,13 @@ export const GroupView = (): JSX.Element => {
                             <h4>Team Home</h4>
                         </Col>
                         <Col sm={1} style={{ background: "white" }}>
-                            <Image src="https://via.placeholder.com/64" roundedCircle />
+                            <TeamIcon team={"SWE"} size={"large"} />
                         </Col>
                         <Col sm={2} className="text-center align-self-center">
                             <h4>14:00</h4>
                         </Col>
                         <Col sm={1} style={{ background: "white" }}>
-                            <Image src="https://via.placeholder.com/64" roundedCircle />
+                            <TeamIcon team={"ESP"} size={"large"} />
                         </Col>
                         <Col sm={4} className="text-center align-self-center">
                             <h4>Team Away</h4>

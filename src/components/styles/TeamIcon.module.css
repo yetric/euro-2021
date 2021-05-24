@@ -7,9 +7,17 @@
 }
 
 .flag {
-    width: 18px;
+
     height: auto;
+    margin-right: 4px;
+}
+
+.small {
     position: relative;
     top: -3px;
-    margin-right: 4px;
+    width: 18px;
+}
+
+.large {
+    width: 42px;
 }

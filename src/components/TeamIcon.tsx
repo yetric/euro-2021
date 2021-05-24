@@ -3,9 +3,10 @@ import styles from "./styles/TeamIcon.module.css";
 
 interface TeamIconProps {
     team: string;
+    size?: string;
 }
-export const TeamIcon = ({team}: TeamIconProps) => {
+export const TeamIcon = ({team, size = "small"}: TeamIconProps) => {
     return <span className={styles.wrap}>
-        <img className={styles.flag} src={CountryLookup.getFlag(team)} />
+        <img className={styles.flag + " " + styles[size]} src={CountryLookup.getFlag(team)} />
     </span>;
 }
