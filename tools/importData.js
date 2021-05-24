@@ -33,12 +33,16 @@ const getEuroData = async () => {
         return { id: group.groupName.replace("Group ", ""), teamIds: teamIds };
     });
 
+    // const responseTeam = await statorium.getTeamById("390");
+    // console.log(JSON.stringify(responseTeam.data.team.players[0]));
+
     const fetchTeam = async (id) => {
         const r = await statorium.getTeamById(id);
         return {
             teamID: r.data.team.teamID,
             name: r.data.team.teamName,
-            code: r.data.team.shortName
+            code: r.data.team.shortName,
+            players: r.data.team.players,
         };
     };
 
@@ -53,8 +57,11 @@ getEuroData().then((data) => {
     const db = admin.firestore();
     const batch = db.batch();
 
-    // build Team lookup
-    const teamLookup = Object.assign({}, ...data.teams.map(s => ({[s.teamID]: s})));
+    // build Team lookup for small team ref
+    const teamLookup = Object.assign(
+        {},
+        ...data.teams.map((s) => ({ [s.teamID]: { teamID: s.teamID, name: s.name, code: s.code } }))
+    );
 
     // Group data
     const groupCollection = db.collection("groups");
@@ -62,8 +69,8 @@ getEuroData().then((data) => {
         const grp = {
             id: group.id,
             teamsIds: group.teamIds,
-            teams: group.teamIds.map((id) => (teamLookup[id]))
-        }
+            teams: group.teamIds.map((id) => teamLookup[id])
+        };
         let newDoc = groupCollection.doc(group.id);
         batch.set(newDoc, grp);
         return true;

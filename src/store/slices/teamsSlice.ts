@@ -3,7 +3,6 @@ import { AppThunk, RootState } from "store/index";
 import { firebase } from "services/firebase";
 import { Team } from "store/models";
 import { createSelector } from "reselect";
-import { groupsStateSelector } from "store/slices/groupsSlice";
 
 export const TEAMS_COLLECTION = "teams";
 
@@ -57,7 +56,8 @@ export const loadTeamsAsync = (): AppThunk => async (dispatch) => {
                 ({
                     teamID: doc.data().teamID,
                     code: doc.data().code,
-                    name: doc.data().name
+                    name: doc.data().name,
+                    players: doc.data().players,
                 } as Team)
         );
 
