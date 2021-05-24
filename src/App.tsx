@@ -6,6 +6,9 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>EURO 2021</h1>
+        <div>
+          todo list groups here
+        </div>
       </header>
     </div>
   );
