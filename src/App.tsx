@@ -7,6 +7,7 @@ import { TeamView } from "./views/TeamView";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useLoadGroups } from "store/hooks/useLoadGroups";
 import { useLoadTeams } from "store/hooks/useLoadTeams";
+import { SignupView } from "./views/SignupView";
 
 function App() {
     useLoadGroups();
@@ -20,6 +21,7 @@ function App() {
                     <Route exact path="/group/:groupId" component={GroupView} />
                     <Route exact path="/team/:teamId" component={TeamView} />
                     <Route exact path="/you" component={ProfileView} />
+                    <Route exact path="/signup" component={SignupView} />
                 </Switch>
             </Layout>
         </BrowserRouter>

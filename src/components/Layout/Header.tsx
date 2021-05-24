@@ -1,6 +1,7 @@
 import styles from "styles/App.module.css";
 import logo from "assets/uefa-euro-2020.png";
 import { Link } from "react-router-dom";
+import { IoPersonCircle } from "react-icons/all";
 
 export const Header = (): JSX.Element => {
     return (
@@ -8,6 +9,11 @@ export const Header = (): JSX.Element => {
             <Link to={`/`}>
                 <img alt="euro 2020" src={logo} style={{ width: "80px" }} />
             </Link>
+            <div className={styles.icons}>
+                <Link to={"/you"}>
+                    <IoPersonCircle /> Profile
+                </Link>
+            </div>
         </header>
     );
 };

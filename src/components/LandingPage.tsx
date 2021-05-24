@@ -1,8 +1,13 @@
 import { Button, Card, Col, Row } from "react-bootstrap";
 import styles from "./styles/LandingPage.module.css";
 import { IoCheckmarkSharp, IoFootball } from "react-icons/all";
+import { useHistory } from "react-router-dom";
 
 export const LandingPage = () => {
+    const history = useHistory();
+    const toSignup = () => {
+        history.push("/signup");
+    };
     return (
         <div className={styles.wrap}>
             <Row>
@@ -42,7 +47,7 @@ export const LandingPage = () => {
                                     <IoCheckmarkSharp /> Win the stuff
                                 </li>
                             </ul>
-                            <Button href={"/signup"} variant={"success"} block={true}>
+                            <Button variant={"success"} block={true} onClick={() => toSignup()}>
                                 <IoFootball /> Skapa konto
                             </Button>
                         </Card.Body>
