@@ -1,16 +1,15 @@
-import React from "react";
-import styles from "./styles/App.module.css";
-import { GroupList } from "components/GroupList";
-import logo from "./assets/uefa-euro-2020.png";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { StartView } from "views/StartView";
+import { GroupView } from "views/GroupView";
 
 function App() {
     return (
-        <div className={styles.app}>
-            <header className={styles.header}>
-                <img alt="euro 2020" src={logo} style={{width: "300px"}}/>
-                <GroupList />
-            </header>
-        </div>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={StartView} />
+                <Route exact path="/group/:groupId" component={GroupView} />
+            </Switch>
+        </BrowserRouter>
     );
 }
 
