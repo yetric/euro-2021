@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { groupsStateSelector } from "store/slices/groupsSlice";
-import { Link } from "react-router-dom";
+import { Col, Row } from "react-bootstrap";
+import {GroupCard} from "components/GroupCard";
 
 export const GroupList = (): JSX.Element => {
     const groupState = useSelector(groupsStateSelector);
@@ -8,17 +9,14 @@ export const GroupList = (): JSX.Element => {
     if (groupState.isLoading) return <div>Loading...</div>;
 
     return (
-        <div>
+        <Row>
             {groupState.groups.map((group) => {
                 return (
-                    <div key={group.id}>
-                        <Link to={`/group/${group.id}`}>Group {group.id}</Link>
-                        {group.teams.map((team) => (
-                            <div key={team}>{team}</div>
-                        ))}
-                    </div>
+                    <Col key={group.id}>
+                        <GroupCard group={group} />
+                    </Col>
                 );
             })}
-        </div>
+        </Row>
     );
 };
