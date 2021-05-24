@@ -2,45 +2,159 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Prerequisites
+1. Java Runtime Environment 1.8+  https://java.com/en/download/manual.jsp download and install java
+2. Install Node.js v12.12.0 or higher  For windows: https://nodejs.org/dist/latest-v12.x/node-v12.22.1-x64.msi
 
-In the project directory, you can run:
+### Clone Install Setup Configure
+- First of all clone the github-repository (we do feature-branches and Pull Requests)
 
-### `yarn start`
+```
+git clone ...
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Install dependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+cd project
+npm install
+```
+- Configure Firebase. Create a file in project root called .env
+   (there is a .env.example file you can copy to a new .env.local ) Get the env credentials by talking to the team.
+   The .env file will contain secrets that should never be compromised. Don't commit them.
 
-### `yarn test`
+```
+REACT_APP_ENVIRONMENT=localhost
+REACT_APP_FIREBASE_API_KEY=????
+REACT_APP_FIREBASE_AUTH_DOMAIN=????
+REACT_APP_FIREBASE_DATABASE_URL=????
+REACT_APP_FIREBASE_PROJECT_ID=????
+REACT_APP_FIREBASE_STORAGE_BUCKET=????
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=????
+REACT_APP_FIREBASE_APP_ID=????
+REACT_APP_FIREBASE_MEASUREMENT_ID=????
+REACT_APP_FIREBASE_USE_LOCALHOST_EMULATORS=true
+```
+- Set up Firebase CLI (Command Line Interface). You'll need a Node.js environment to write functions, and you'll need the Firebase CLI to deploy functions to the Cloud Functions runtime.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install -g firebase-tools
+```
 
-### `yarn build`
+- In many cases, new features and bug fixes are available only with the latest version of the Firebase CLI and the firebase-functions SDK. It's a good practice to frequently update both the Firebase CLI and the SDK with these commands inside the functions folder of your Firebase project.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+cd project/functions
+npm install firebase-functions@latest firebase-admin@latest --save
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Install the 'functions' dependencies along with the Local emulator (Firebase Tools v9.10.0 or higher, Node.js v12.13.0 or higher and Java version 1.8 or higher)
+```
+cd project/functions
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Important! After new functions are added or changed in our backend or setting this up for the first time. 
+  You need to build the backend manually by running:
 
-### `yarn eject`
+```
+cd projekt/functions
+npm run build
+```
+(this will compile with tsc, Typescript to Javascript)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Add custom configs for our Firebase Cloud Functions. Handling 3rd party API secrets etc
+(not needed right now)
+```
+tbd
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Start up the emulators in project root directory.
+```
+firebase emulators:start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The emulator will start our services:
+
+```
+Firebase Auth -> localhost:5001
+Cloud Functions -> localhost:5002
+Cloud Firestore (our database) -> localhost:8080
+Emulator Suite UI default is http://localhost:4000
+```
+
+If having problems with emulators (firestore and UI) not shutting down.
+A message like this:
+
+```
+ Emulator UI has exited upon receiving signal: SIGINT
+```
+
+or when you try to start your emulators:
+
+```
+Port 5003 is not open on localhost, could not start Pub/Sub Emulator.
+```
+
+We need to kill the process that hangs on the port:
+
+On mac:
+```
+ lsof -i tcp:<port>
+ kill -9 <pid>
+```
+On windows:
+
+```
+netstat -ano | findstr :<port>
+taskkill /PID <pid> /F
+```
+
+
+
+- To play with Firestore (our db) goto Emulator UI at http://localhost:4000/firestore
+
+- Tools (data importer)
+```
+cd projekt/tools
+npm install
+```
+
+- Obtain a serviceAccount.json file if you dont ready have one, it should look something like this:
+    The serviceAccount.json contains sensitive information and must therefore never be committed to vcs.
+    Place the serviceAccount.json in the tools-folder.
+    
+    ```
+    {
+      "type": "service_account",
+      "project_id": "",
+      "private_key_id": "",
+      "private_key": "",
+      "client_email": "",
+      "client_id": "",
+      "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+      "token_uri": "https://oauth2.googleapis.com/token",
+      "auth_provider_x509_cert_url":
+      "client_x509_cert_url":
+    }
+    ```
+
+
+- To populate the database with some initial test-data run:
+
+```
+cd project/tools
+node importData
+```
+
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Learn more about [Firebase & Cloud FireStore](https://firebase.google.com/docs/firestore).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Learn more about [Firebase Emulator Suite](https://firebase.google.com/docs/emulator-suite).
+
+
+
+ 
