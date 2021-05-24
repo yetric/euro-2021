@@ -13,11 +13,25 @@ export const GroupCard = (props: GroupCardProps): JSX.Element => {
         <Card>
             <Card.Body>
                 <Card.Title>Group {props.group.id}</Card.Title>
+                <div className={styles.cities}>
+                    {props.group.home.map((city) => (
+                        <span>{city}</span>
+                    ))}
+                </div>
             </Card.Body>
             <ListGroup className="list-group-flush">
-                {props.group.teams.map((team) => (
-                    <ListGroupItem key={team}><span className={styles.flag}>{CountryLookup.getFlag(team)}</span> {team}</ListGroupItem>
-                ))}
+                {props.group.teams.map((team) => {
+
+                    let isHost = props.group.hosts.indexOf(team) > -1;
+
+                    return (
+                        <ListGroupItem key={team}>
+                            <span className={styles.flag}>{CountryLookup.getFlag(team)}</span>{" "}
+                            {team}
+                            {isHost && <span className={styles.host}>HOST</span>}
+                        </ListGroupItem>
+                    );
+                })}
             </ListGroup>
             <Card.Body>
                 <Link to={`/group/${props.group.id}`}>More</Link>
