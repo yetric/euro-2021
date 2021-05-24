@@ -15,7 +15,7 @@ export const GroupCard = (props: GroupCardProps): JSX.Element => {
                 <Card.Title>Group {props.group.id}</Card.Title>
                 <div className={styles.cities}>
                     {props.group.home.map((city) => (
-                        <span>{city}</span>
+                        <span key={city}>{city}</span>
                     ))}
                 </div>
             </Card.Body>

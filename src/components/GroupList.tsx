@@ -13,11 +13,11 @@ export const GroupList = (): JSX.Element => {
 
     return (
         <>
-            {chunks(groupState.groups, 3).map((chunk) => {
+            {chunks(groupState.groups, 3).map((chunk, index) => {
                 return (
-                    <CardGroup className={styles.group}>
+                    <CardGroup key={"row-" + index} className={styles.group}>
                         {chunk.map((group: Group, index: number) => {
-                            return <GroupCard group={group} />;
+                            return <GroupCard key={"card-"+index} group={group} />;
                         })}
                     </CardGroup>
                 );
