@@ -9,14 +9,14 @@ function App() {
     useLoadGroups();
 
     return (
-        <Layout>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Layout>
                 <Switch>
                     <Route exact path="/" component={StartView} />
                     <Route exact path="/group/:groupId" component={GroupView} />
                 </Switch>
-            </BrowserRouter>
-        </Layout>
+            </Layout>
+        </BrowserRouter>
     );
 }
 

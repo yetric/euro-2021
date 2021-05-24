@@ -1,4 +1,4 @@
-import { Card, Col, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Group } from "store/models";
 import { Link } from "react-router-dom";
 
@@ -14,13 +14,11 @@ export const GroupCard = (props: GroupCardProps): JSX.Element => {
             </Card.Body>
             <ListGroup className="list-group-flush">
                 {props.group.teams.map((team) => (
-                    <ListGroupItem>{team}</ListGroupItem>
+                    <ListGroupItem key={team}>{team}</ListGroupItem>
                 ))}
             </ListGroup>
             <Card.Body>
-                <Card.Link>
-                    <Link to={`/group/${props.group.id}`}>See more</Link>
-                </Card.Link>
+                <Link to={`/group/${props.group.id}`}>See more</Link>
             </Card.Body>
         </Card>
     );
