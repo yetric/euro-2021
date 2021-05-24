@@ -1,118 +1,119 @@
 {
-  "stadiums": [
-    {
-      "city": "Amsterdam",
-      "country": "Netherlands",
-      "arena": "Johan Cruijff Arena",
-      "short": "cruijff",
-      "capacity": 54990,
-      "location": {
-        "lat": 52.314353049999994,
-        "lng": 4.942843089053988
-      }
-    },
-    {
-      "city": "Baku",
-      "country": "Azerbaijan",
-      "arena": "Baku Olympic Stadium",
-      "short": "baku-olympic",
-      "capacity": 68700,
-      "location": {
-        "lat":  40.429913,
-        "lng":49.919163
-      }
-    },
-    {
-      "city": "Bucharest",
-      "country": "Romania",
-      "arena": "National Arena Bucharest",
-      "short": "national-arena-bucharest",
-      "capacity": 55600,
-      "location": {
-        "lat":  44.437149,
-        "lng":26.151758
-      }
-    },
-    {
-      "city": "Budapest",
-      "country": "Hungary",
-      "arena": "Puskás Arena",
-      "short": "puskas",
-      "capacity": 67889,
-      "location": {
-        "lat":  47.503120,
-        "lng":19.095879
-      }
-    },
-    {
-      "city": "Copenhagen",
-      "country": "Denmark",
-      "arena": "Parken Stadium",
-      "short": "parken",
-      "capacity": 38065,
-      "location": {
-        "lat":55.70148,"lng":12.56999
-      }
-    },
-    {
-      "city": "Glasgow",
-      "country": "Scotland",
-      "arena": "Hampden Park",
-      "short": "hampden-park",
-      "capacity": 52063,
-      "location": {"lat":55.82218,"lng":-4.2512}
-    },
-    {
-      "city": "London",
-      "country": "England",
-      "arena": "Wembley Stadium",
-      "short": "wembley",
-      "capacity": 90000,
-      "location": {
-        "lat": 51.550503,
-        "lng": -0.304841
-      }
-    },
-    {
-      "city": "Munich",
-      "country": "Germany",
-      "arena": "Football Arena Munich",
-      "short": "football-arena-munich",
-      "capacity": 75000,
-      "location": {
-        "lat": 48.218967,
-        "lng": 11.623746
-      }
-    },
-    {
-      "city": "Rome",
-      "country": "Italy",
-      "arena": "Olimpico in Rome",
-      "short": "olimpico",
-      "capacity": 72698,
-      "location": {
-        "lat": 41.933964,
-        "lng": 12.454297
-      }
-    },
-    {
-      "city": "Saint Petersburg",
-      "country": "Russia",
-      "arena": "Saint Petersburg Stadium",
-      "short": "saint-petersburg-stadium",
-      "capacity": 68134,
-      "location": {
-        "lat": 59.972733,
-        "lng": 30.219210
-      }
-    },
-    {
-      "city": "Seville",
-      "country": "Spain",
-      "arena": "Estadio La Cartuja",
-      "short": "estadio-la-cartuja",
-      "capacity": 57619,
-      "location": {"lat":55.82218,"lng":-4.2512}
-    }
-  ]
+    "stadiums": [
+        {
+            "city": "Amsterdam",
+            "country": "Netherlands",
+            "arena": "Johan Cruijff Arena",
+            "short": "cruijff",
+            "capacity": 54990,
+            "location": {
+                "lat": 52.314353049999994,
+                "lng": 4.942843089053988
+            }
+        },
+        {
+            "city": "Baku",
+            "country": "Azerbaijan",
+            "arena": "Baku Olympic Stadium",
+            "short": "baku-olympic",
+            "capacity": 68700,
+            "location": {
+                "lat": 40.429913,
+                "lng": 49.919163
+            }
+        },
+        {
+            "city": "Bucharest",
+            "country": "Romania",
+            "arena": "National Arena Bucharest",
+            "short": "national-arena-bucharest",
+            "capacity": 55600,
+            "location": {
+                "lat": 44.437149,
+                "lng": 26.151758
+            }
+        },
+        {
+            "city": "Budapest",
+            "country": "Hungary",
+            "arena": "Puskás Arena",
+            "short": "puskas",
+            "capacity": 67889,
+            "location": {
+                "lat": 47.50312,
+                "lng": 19.095879
+            }
+        },
+        {
+            "city": "Copenhagen",
+            "country": "Denmark",
+            "arena": "Parken Stadium",
+            "short": "parken",
+            "capacity": 38065,
+            "location": {
+                "lat": 55.70148,
+                "lng": 12.56999
+            }
+        },
+        {
+            "city": "Glasgow",
+            "country": "Scotland",
+            "arena": "Hampden Park",
+            "short": "hampden-park",
+            "capacity": 52063,
+            "location": { "lat": 55.82218, "lng": -4.2512 }
+        },
+        {
+            "city": "London",
+            "country": "England",
+            "arena": "Wembley Stadium",
+            "short": "wembley",
+            "capacity": 90000,
+            "location": {
+                "lat": 51.550503,
+                "lng": -0.304841
+            }
+        },
+        {
+            "city": "Munich",
+            "country": "Germany",
+            "arena": "Football Arena Munich",
+            "short": "football-arena-munich",
+            "capacity": 75000,
+            "location": {
+                "lat": 48.218967,
+                "lng": 11.623746
+            }
+        },
+        {
+            "city": "Rome",
+            "country": "Italy",
+            "arena": "Olimpico in Rome",
+            "short": "olimpico",
+            "capacity": 72698,
+            "location": {
+                "lat": 41.933964,
+                "lng": 12.454297
+            }
+        },
+        {
+            "city": "Saint Petersburg",
+            "country": "Russia",
+            "arena": "Saint Petersburg Stadium",
+            "short": "saint-petersburg-stadium",
+            "capacity": 68134,
+            "location": {
+                "lat": 59.972733,
+                "lng": 30.21921
+            }
+        },
+        {
+            "city": "Seville",
+            "country": "Spain",
+            "arena": "Estadio La Cartuja",
+            "short": "estadio-la-cartuja",
+            "capacity": 57619,
+            "location": { "lat": 55.82218, "lng": -4.2512 }
+        }
+    ]
 }

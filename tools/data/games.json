@@ -1,60 +1,60 @@
 {
-  "games": [
-    {
-      "home": "TUR",
-      "away": "ITA",
-      "arena": "Rome",
-      "time": "2021-06-11 21:00:00",
-      "goals": [],
-      "cards": [],
-      "group": "A",
-      "score": {
-        "home": 0,
-        "away": 0
-      },
-      "matchday": 1
-    },
-    {
-      "home": "WAL",
-      "away": "SUI",
-      "arena": "Baku",
-      "time": "2021-06-12 15:00:00",
-      "goals": [],
-      "cards": [],
-      "group": "A",
-      "score": {
-        "home": 0,
-        "away": 0
-      },
-      "matchday": 1
-    },
-    {
-      "home": "DEN",
-      "away": "FIN",
-      "arena": "Copenhagen",
-      "time": "2021-06-12 18:00:00",
-      "goals": [],
-      "cards": [],
-      "group": "B",
-      "score": {
-        "home": 0,
-        "away": 0
-      },
-      "matchday": 1
-    },
-    {
-      "home": "BEL",
-      "away": "RUS",
-      "arena": "St Petersburg",
-      "time": "2021-06-12 21:00:00",
-      "goals": [],
-      "cards": [],
-      "group": "B",
-      "score": {
-        "home": 0,
-        "away": 0
-      },
-      "matchday": 1
-    }
-  ]
+    "games": [
+        {
+            "home": "TUR",
+            "away": "ITA",
+            "arena": "Rome",
+            "time": "2021-06-11 21:00:00",
+            "goals": [],
+            "cards": [],
+            "group": "A",
+            "score": {
+                "home": 0,
+                "away": 0
+            },
+            "matchday": 1
+        },
+        {
+            "home": "WAL",
+            "away": "SUI",
+            "arena": "Baku",
+            "time": "2021-06-12 15:00:00",
+            "goals": [],
+            "cards": [],
+            "group": "A",
+            "score": {
+                "home": 0,
+                "away": 0
+            },
+            "matchday": 1
+        },
+        {
+            "home": "DEN",
+            "away": "FIN",
+            "arena": "Copenhagen",
+            "time": "2021-06-12 18:00:00",
+            "goals": [],
+            "cards": [],
+            "group": "B",
+            "score": {
+                "home": 0,
+                "away": 0
+            },
+            "matchday": 1
+        },
+        {
+            "home": "BEL",
+            "away": "RUS",
+            "arena": "St Petersburg",
+            "time": "2021-06-12 21:00:00",
+            "goals": [],
+            "cards": [],
+            "group": "B",
+            "score": {
+                "home": 0,
+                "away": 0
+            },
+            "matchday": 1
+        }
+    ]
 }
