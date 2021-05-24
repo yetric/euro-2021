@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "store/index";
 import { firebase } from "services/firebase";
 import { Team } from "store/models";
+import { createSelector } from "reselect";
+import { groupsStateSelector } from "store/slices/groupsSlice";
 
 export const TEAMS_COLLECTION = "teams";
 
@@ -67,5 +69,11 @@ export const loadTeamsAsync = (): AppThunk => async (dispatch) => {
 
 const { updating, hasError, update } = teamsSlice.actions;
 export const teamsStateSelector = (state: RootState): TeamsState => state.teams;
+
+export const getTeamByCodeSelector = (code: string) =>
+  createSelector([teamsStateSelector], (teamsState) => {
+      return teamsState.teams.find((team) => code === team.code);
+  });
+
 
 export default teamsSlice.reducer;
