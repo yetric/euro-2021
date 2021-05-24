@@ -1,10 +1,8 @@
-import { useLoadGroups } from "store/hooks/useLoadGroups";
 import { useSelector } from "react-redux";
 import { groupsStateSelector } from "store/slices/groupsSlice";
 import { Link } from "react-router-dom";
 
 export const GroupList = (): JSX.Element => {
-    useLoadGroups();
     const groupState = useSelector(groupsStateSelector);
 
     if (groupState.isLoading) return <div>Loading...</div>;
