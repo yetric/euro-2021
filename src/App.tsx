@@ -1,10 +1,10 @@
 import React from 'react';
-import './styles/App.css';
+import styles from './styles/App.module.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className={styles.app}>
+      <header className={styles.header}>
         <h1>EURO 2021</h1>
         <div>
           todo list groups here
