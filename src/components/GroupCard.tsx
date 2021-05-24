@@ -2,6 +2,7 @@ import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { GroupDetailed } from "store/models";
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/all";
+import { TeamIcon } from "./TeamIcon";
 
 interface GroupCardProps {
     group: GroupDetailed;
@@ -15,7 +16,10 @@ export const GroupCard = (props: GroupCardProps): JSX.Element => {
             </Card.Body>
             <ListGroup className="list-group-flush">
                 {props.group.teams.map((team, index) => (
-                    <ListGroupItem key={index}>{team?.code ?? "???"}</ListGroupItem>
+                    <ListGroupItem key={index}>
+                        {team && <TeamIcon team={team.code} />}
+                        {team?.code ?? "???"}
+                    </ListGroupItem>
                 ))}
             </ListGroup>
             <Card.Body>
