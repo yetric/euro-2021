@@ -5,8 +5,14 @@ interface TeamIconProps {
     team: string;
     size?: string;
 }
-export const TeamIcon = ({team, size = "small"}: TeamIconProps) => {
-    return <span className={styles.wrap}>
-        <img className={styles.flag + " " + styles[size]} src={CountryLookup.getFlag(team)} />
-    </span>;
-}
+export const TeamIcon = ({ team, size = "small" }: TeamIconProps) => {
+    return (
+        <span className={styles.wrap}>
+            <img
+                alt={team}
+                className={styles.flag + " " + styles[size]}
+                src={CountryLookup.getFlag(team)}
+            />
+        </span>
+    );
+};

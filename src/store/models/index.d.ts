@@ -1,6 +1,7 @@
 export interface Group {
     id: string;
     teamsIds: string[];
+    teams: Team[];
 }
 
 export interface GroupDetailed {

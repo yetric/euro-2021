@@ -52,7 +52,8 @@ export const loadGroupsAsync = (): AppThunk => async (dispatch) => {
 
         const groups = querySnapshot.docs.map((doc) => ({
             id: doc.data().id,
-            teamsIds: doc.data().teamIds
+            teamsIds: doc.data().teamIds,
+            teams: doc.data().teams
         }));
 
         dispatch(update(groups));

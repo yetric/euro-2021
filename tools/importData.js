@@ -30,7 +30,6 @@ const getEuroData = async () => {
     const response = await statorium.getStandingsBySeasonId(40);
     const groups = response.data.season.groups.map((group) => {
         const teamIds = group.standings.map((standings) => standings.teamID);
-        const teams = [];
         return { id: group.groupName.replace("Group ", ""), teamIds: teamIds };
     });
 
@@ -54,11 +53,19 @@ getEuroData().then((data) => {
     const db = admin.firestore();
     const batch = db.batch();
 
+    // build Team lookup
+    const teamLookup = Object.assign({}, ...data.teams.map(s => ({[s.teamID]: s})));
+
     // Group data
     const groupCollection = db.collection("groups");
     data.groups.map((group) => {
+        const grp = {
+            id: group.id,
+            teamsIds: group.teamIds,
+            teams: group.teamIds.map((id) => (teamLookup[id]))
+        }
         let newDoc = groupCollection.doc(group.id);
-        batch.set(newDoc, group);
+        batch.set(newDoc, grp);
         return true;
     });
 

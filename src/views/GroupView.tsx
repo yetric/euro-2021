@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { GroupStandingsTable } from "components/GroupStandingsTable";
 import { useSelector } from "react-redux";
-import { Col, ListGroup, Row, Image } from "react-bootstrap";
+import { Col, ListGroup, Row } from "react-bootstrap";
 import { getGroupByIDSelector } from "store/selectors";
 import { groupsStateSelector } from "store/slices/groupsSlice";
 import { teamsStateSelector } from "store/slices/teamsSlice";
