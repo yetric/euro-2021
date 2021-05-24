@@ -3,6 +3,8 @@ import { Group } from "store/models";
 import { Link } from "react-router-dom";
 import styles from "./styles/GroupCard.module.css";
 import { TeamIcon } from "./TeamIcon";
+import { BiFootball } from "react-icons/bi";
+import { FiArrowRight } from "react-icons/all";
 
 interface GroupCardProps {
     group: Group;
@@ -25,16 +27,16 @@ export const GroupCard = (props: GroupCardProps): JSX.Element => {
                     let isHost = props.group.hosts.indexOf(team) > -1;
 
                     return (
-                        <ListGroupItem key={team}>
+                        <ListGroupItem className={styles.item} key={team}>
                             <TeamIcon team={team} />
-                            {team}
-                            {isHost && <span className={styles.host}>HOST</span>}
+                            <Link to={"/team/" + team}>{team}</Link>
+                            {isHost && <span className={styles.host}><BiFootball /></span>}
                         </ListGroupItem>
                     );
                 })}
             </ListGroup>
             <Card.Body>
-                <Link to={`/group/${props.group.id}`}>More</Link>
+                <Link to={`/group/${props.group.id}`}>Details <FiArrowRight /></Link>
             </Card.Body>
         </Card>
     );

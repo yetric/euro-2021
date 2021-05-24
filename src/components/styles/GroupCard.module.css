@@ -13,8 +13,14 @@
 }
 
 .host {
-    font-size: 12px;
-    color: green;
+    color: #80CBC4;
+    font-size: 13px;
     display: inline-block;
     margin-left: 5px;
+    position: relative;
+    top: -2px;
+}
+
+.item a {
+    color: black
 }

@@ -5,5 +5,7 @@ interface TeamIconProps {
     team: string;
 }
 export const TeamIcon = ({team}: TeamIconProps) => {
-    return <span className={styles.wrap}>{CountryLookup.getFlag(team)}</span>;
+    return <span className={styles.wrap}>
+        <img className={styles.flag} src={CountryLookup.getFlag(team)} />
+    </span>;
 }

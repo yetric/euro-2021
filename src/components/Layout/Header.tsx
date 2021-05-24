@@ -6,7 +6,7 @@ export const Header = (): JSX.Element => {
     return (
         <header className={styles.header}>
             <Link to={`/`}>
-                <img alt="euro 2020" src={logo} style={{ width: "300px" }} />
+                <img alt="euro 2020" src={logo} style={{ width: "80px" }} />
             </Link>
         </header>
     );

@@ -5,3 +5,10 @@
     display: inline-block;
     margin-right: 5px;
 }
+
+.flag {
+    width: 24px;
+    height: auto;
+    position: relative;
+    top: -3px;
+}
