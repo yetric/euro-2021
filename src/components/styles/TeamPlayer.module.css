@@ -1,0 +1,28 @@
+.row {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e3e3e3;
+}
+.stats {
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.stats dt {
+    float: left;
+    width: 25%;
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0 0 8px 0;
+    text-align: right;
+    margin-right: 8px;
+}
+.stats dd {
+    float: left;
+    width: calc(75% - 8px);
+    /* adjust the width; make sure the total of both is 100% */
+    padding: 0 0 8px 0;
+    margin: 0;
+}

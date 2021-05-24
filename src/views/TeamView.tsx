@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getTeamByCodeSelector } from "store/slices/teamsSlice";
 import { TeamIcon } from "components/TeamIcon";
+import { TeamPlayer } from "../components/TeamPlayer";
+import { Player } from "../store/models";
 
 export const TeamView = () => {
     const { teamId } = useParams<{ teamId: string }>();
@@ -16,25 +18,16 @@ export const TeamView = () => {
                 <title>{team.name}</title>
             </Helmet>
             <div>
-                <h1>
-                    {team.name} ({team.code})
-                </h1>
-                <TeamIcon team={team.code} size={"large"} />
-                <p>(Pos: 1 = målvakt, 2 = back, 3 = mittf, 4 = anfall)</p>
-                <ul>
-                    {team.players?.map((player) => (
-                        <li key={player.playerID}>
-                            <img
-                                src={player.photo}
-                                alt={player.shortName}
-                                style={{ width: "100px" }}
-                            />
-                            Pos: {player.additionalInfo.position} {player.fullName}{" "}
-                            {player.additionalInfo.height} {player.additionalInfo.weight}{" "}
-                            {player.additionalInfo.birthdate}
-                        </li>
-                    ))}
-                </ul>
+                <h1>{team.name}</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quas quis vel
+                    voluptate? Aspernatur ipsam placeat ratione. Assumenda culpa debitis doloremque,
+                    eligendi ex facilis nisi, nobis quidem rem sapiente soluta!
+                </p>
+                <h2>Players</h2>
+                {team.players?.map((player: Player) => (
+                    <TeamPlayer key={player.playerID} player={player} />
+                ))}
             </div>
         </>
     );

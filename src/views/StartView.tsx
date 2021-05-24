@@ -1,10 +1,14 @@
 import * as React from "react";
 import { GroupList } from "components/GroupList";
 import { LandingPage } from "../components/LandingPage";
+import { Helmet } from "react-helmet";
 
 export const StartView = (): JSX.Element => {
     return (
         <div>
+            <Helmet>
+                <title>Euro 2020 (2021) - Fotbollsfeber.se</title>
+            </Helmet>
             <LandingPage />
             <h2>Euro 2020 - Alla grupper</h2>
             <p className="lead">
