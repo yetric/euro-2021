@@ -11,8 +11,8 @@ export const GroupStandingsTable = (props: GroupStandingsTableProps): JSX.Elemen
         <Table>
             <thead>
                 <tr>
-                    {cols.map((col) => (
-                        <th>{col}</th>
+                    {cols.map((col, index) => (
+                        <th key={"col-" + index}>{col}</th>
                     ))}
                 </tr>
             </thead>
