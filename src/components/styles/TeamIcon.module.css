@@ -7,8 +7,9 @@
 }
 
 .flag {
-    width: 24px;
+    width: 18px;
     height: auto;
     position: relative;
     top: -3px;
+    margin-right: 4px;
 }
