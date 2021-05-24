@@ -25,7 +25,7 @@ export enum Country {
     Germany = "DEU"
 }
 
-export const CountryAlpha2 = {
+export const CountryAlpha2: any = {
     "TUR": "TR",
     "ITA": "IT",
     "WAL": "GB-WLS",
@@ -54,8 +54,8 @@ export const CountryAlpha2 = {
 }
 
 export const CountryLookup: any = {
-    async getFlag(code: string) {
-        return [];
+    getFlag(code: string) {
+        return "---FLAG---" + (CountryAlpha2[code] ?? "") + "---FLAG---";
     },
     teamShortToIso(short: string) {
 
