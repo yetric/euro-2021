@@ -55,7 +55,7 @@ export const CountryAlpha2: any = {
 
 export const CountryLookup: any = {
     getFlag(code: string) {
-        return "---FLAG---" + (CountryAlpha2[code] ?? "") + "---FLAG---";
+        return `---${CountryAlpha2[code] ?? ""}---`;
     },
     teamShortToIso(short: string) {
 

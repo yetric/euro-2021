@@ -1,0 +1,7 @@
+.wrap {
+    color: red;
+    font-size: 10px;
+    opacity: .6;
+    display: inline-block;
+    margin-right: 5px;
+}

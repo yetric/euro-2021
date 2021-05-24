@@ -1,8 +1,8 @@
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import { Group } from "store/models";
 import { Link } from "react-router-dom";
-import { CountryLookup } from "../utils/CountryLookup";
 import styles from "./styles/GroupCard.module.css";
+import { TeamIcon } from "./TeamIcon";
 
 interface GroupCardProps {
     group: Group;
@@ -26,7 +26,7 @@ export const GroupCard = (props: GroupCardProps): JSX.Element => {
 
                     return (
                         <ListGroupItem key={team}>
-                            <span className={styles.flag}>{CountryLookup.getFlag(team)}</span>{" "}
+                            <TeamIcon team={team} />
                             {team}
                             {isHost && <span className={styles.host}>HOST</span>}
                         </ListGroupItem>
