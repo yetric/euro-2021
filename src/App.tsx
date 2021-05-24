@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './styles/App.module.css';
-import './styles/App.css';
 import {useLoadGroups} from "store/hooks/useLoadGroups";
 
 function App() {
