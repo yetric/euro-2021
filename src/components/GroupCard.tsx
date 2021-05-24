@@ -18,7 +18,7 @@ export const GroupCard = (props: GroupCardProps): JSX.Element => {
                 ))}
             </ListGroup>
             <Card.Body>
-                <Link to={`/group/${props.group.id}`}>See more</Link>
+                <Link to={`/group/${props.group.id}`}>More</Link>
             </Card.Body>
         </Card>
     );

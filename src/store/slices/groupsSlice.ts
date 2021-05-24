@@ -2,6 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {AppThunk, RootState} from 'store/index';
 import {firebase} from 'services/firebase';
 import {Group} from "store/models";
+import {createSelector} from 'reselect';
 
 export const GROUPS_COLLECTION = 'groups';
 
@@ -69,5 +70,11 @@ export const loadGroupsAsync = (): AppThunk => async (dispatch) => {
 
 export const {updating, hasError, update} = groupsSlice.actions;
 export const groupsStateSelector = (state: RootState): GroupsState => state.groups;
+
+export const getGroupByIdSelector = (groupId: string) =>
+    createSelector(groupsStateSelector, (state) => {
+      return state.groups.find((group) => group.id === groupId);
+    });
+
 
 export default groupsSlice.reducer;

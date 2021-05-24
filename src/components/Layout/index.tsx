@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import {Header} from "components/Layout/Header";
+import { Header } from "components/Layout/Header";
 
 interface LayoutProps {
     children: JSX.Element[] | JSX.Element;
