@@ -1,0 +1,16 @@
+.wrap {
+    padding: 40px 0;
+}
+
+.features {
+    list-style: none;
+    padding: 0;
+}
+
+.features li {
+    color: #37474f;
+}
+
+.features li svg {
+    color: #388e3c;
+}
