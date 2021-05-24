@@ -6,9 +6,11 @@ import {
   getDefaultMiddleware,
 } from '@reduxjs/toolkit';
 import groupsReducer from 'store/slices/groupsSlice';
+import teamsReducer from 'store/slices/teamsSlice';
 
 const combinedReducer = combineReducers({
   groups: groupsReducer,
+  teams: teamsReducer,
 });
 
 const middlewares = [...getDefaultMiddleware()];

@@ -1,13 +1,16 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { StartView } from "views/StartView";
 import { GroupView } from "views/GroupView";
-import { useLoadGroups } from "store/hooks/useLoadGroups";
 import { Layout } from "components/Layout";
 import { ProfileView } from "./views/ProfileView";
 import { TeamView } from "./views/TeamView";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useLoadGroups } from "store/hooks/useLoadGroups";
+import { useLoadTeams } from "store/hooks/useLoadTeams";
 
 function App() {
     useLoadGroups();
+    useLoadTeams();
 
     return (
         <BrowserRouter>

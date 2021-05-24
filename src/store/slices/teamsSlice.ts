@@ -1,26 +1,26 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "store/index";
 import { firebase } from "services/firebase";
-import { Group } from "store/models";
+import { Team } from "store/models";
 
-export const GROUPS_COLLECTION = "groups";
+export const TEAMS_COLLECTION = "teams";
 
-interface GroupsState {
-    groups: Group[];
+interface TeamsState {
+    teams: Team[];
     hasError: boolean;
     error: string;
     isLoading: boolean;
 }
 
 const initialState = {
-    groups: [],
+    teams: [],
     hasError: false,
     error: "",
     isLoading: true
-} as GroupsState;
+} as TeamsState;
 
-export const groupsSlice = createSlice({
-    name: "groups",
+export const teamsSlice = createSlice({
+    name: "teams",
     initialState: initialState,
     reducers: {
         updating: (state) => {
@@ -33,8 +33,8 @@ export const groupsSlice = createSlice({
             state.error = `An error occurred: (${action.payload}) `;
             state.isLoading = false;
         },
-        update: (state, action: PayloadAction<Group[]>) => {
-            state.groups = action.payload;
+        update: (state, action: PayloadAction<Team[]>) => {
+            state.teams = action.payload;
             state.isLoading = false;
             state.error = "";
             state.hasError = false;
@@ -43,25 +43,29 @@ export const groupsSlice = createSlice({
 });
 
 /**
- * Load Groups Async
+ * Load All Teams Async
  */
-export const loadGroupsAsync = (): AppThunk => async (dispatch) => {
+export const loadTeamsAsync = (): AppThunk => async (dispatch) => {
     try {
         dispatch(updating());
-        const querySnapshot = await firebase.firestore().collection(GROUPS_COLLECTION).get();
+        const querySnapshot = await firebase.firestore().collection(TEAMS_COLLECTION).get();
 
-        const groups = querySnapshot.docs.map((doc) => ({
-            id: doc.data().id,
-            teamsIds: doc.data().teamIds
-        }));
+        const teams = querySnapshot.docs.map(
+            (doc) =>
+                ({
+                    teamID: doc.data().teamID,
+                    code: doc.data().code,
+                    name: doc.data().name
+                } as Team)
+        );
 
-        dispatch(update(groups));
+        dispatch(update(teams));
     } catch (error) {
         dispatch(hasError(error.message.toString()));
     }
 };
 
-export const { updating, hasError, update } = groupsSlice.actions;
-export const groupsStateSelector = (state: RootState): GroupsState => state.groups;
+const { updating, hasError, update } = teamsSlice.actions;
+export const teamsStateSelector = (state: RootState): TeamsState => state.teams;
 
-export default groupsSlice.reducer;
+export default teamsSlice.reducer;

@@ -1,15 +1,49 @@
 import { useParams } from "react-router-dom";
 import { GroupStandingsTable } from "components/GroupStandingsTable";
-import {useSelector} from "react-redux";
-import {getGroupByIdSelector} from "store/slices/groupsSlice";
+import { useSelector } from "react-redux";
+import { Col, ListGroup, Row, Image } from "react-bootstrap";
+import { getGroupByIDSelector } from "store/selectors";
+import { groupsStateSelector } from "store/slices/groupsSlice";
+import { teamsStateSelector } from "store/slices/teamsSlice";
 
 export const GroupView = (): JSX.Element => {
     const { groupId } = useParams<{ groupId: string }>();
-    const group = useSelector(getGroupByIdSelector(groupId))
+    const groupState = useSelector(groupsStateSelector);
+    const teamsState = useSelector(teamsStateSelector);
+    const group = useSelector(getGroupByIDSelector(groupId));
+
+    if (groupState.isLoading || teamsState.isLoading) return <div>Loading...</div>;
+
+    if (!group) return <></>;
+
     return (
         <div>
             <h2>Group {groupId}</h2>
-            <GroupStandingsTable teams={group?.teams ?? []} />
+            <p>Lorem ipsum info about the group</p>
+            <h3>Standings</h3>
+            <GroupStandingsTable group={group} />
+            <h3>Matches</h3>
+            <ListGroup>
+                <ListGroup.Item>
+                    <Row className="text-center align-self-center">
+                        <Col sm={4} className="text-center align-self-center">
+                            <h4>Team Home</h4>
+                        </Col>
+                        <Col sm={1} style={{ background: "white" }}>
+                            <Image src="https://via.placeholder.com/64" roundedCircle />
+                        </Col>
+                        <Col sm={2} className="text-center align-self-center">
+                            <h4>14:00</h4>
+                        </Col>
+                        <Col sm={1} style={{ background: "white" }}>
+                            <Image src="https://via.placeholder.com/64" roundedCircle />
+                        </Col>
+                        <Col sm={4} className="text-center align-self-center">
+                            <h4>Team Away</h4>
+                        </Col>
+                    </Row>
+                </ListGroup.Item>
+            </ListGroup>
         </div>
     );
 };

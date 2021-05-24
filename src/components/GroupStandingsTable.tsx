@@ -1,7 +1,8 @@
 import { Table } from "react-bootstrap";
+import { GroupDetailed } from "store/models";
 
 interface GroupStandingsTableProps {
-    teams: string[];
+    group: GroupDetailed;
 }
 
 const cols = ["Team", "Played", "Won", "Drawn", "Lost", "For", "Against", "Goal diff", "Points"];
@@ -17,9 +18,9 @@ export const GroupStandingsTable = (props: GroupStandingsTableProps): JSX.Elemen
                 </tr>
             </thead>
             <tbody>
-                {props.teams.map((team, index) => (
+                {props.group.teams.map((team, index) => (
                     <tr key={index}>
-                        <td>{team}</td>
+                        <td>{team?.name ?? "n/a"}</td>
                         <td>0</td>
                         <td>0</td>
                         <td>0</td>
