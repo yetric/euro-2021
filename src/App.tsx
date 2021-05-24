@@ -7,8 +7,7 @@ function App() {
     return (
         <div className={styles.app}>
             <header className={styles.header}>
-                <img src={logo} style={{width: "300px"}}/>
-                <h1>EURO 2021</h1>
+                <img alt="euro 2020" src={logo} style={{width: "300px"}}/>
                 <GroupList />
             </header>
         </div>
