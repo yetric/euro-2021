@@ -13,7 +13,6 @@ function App() {
       <header className={styles.header}>
         <h1>EURO 2021</h1>
         <div>
-          todo list groups here
           {groupState.groups.map((group) => {
             return (<div><strong>Grupp {group.id}</strong>{group.teams.map((team) => <div>{team}</div>)}</div>)
           })}
