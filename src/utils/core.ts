@@ -86,3 +86,12 @@ export const groupWeight = (weight: number) => {
     }
     return "-";
 };
+
+export const sortObjectByKeyName = (obj: any) => {
+    return Object.keys(obj)
+        .sort()
+        .reduce(function (result: any, key: any) {
+            result[key] = obj[key];
+            return result;
+        }, {});
+};

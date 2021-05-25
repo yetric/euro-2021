@@ -1,11 +1,36 @@
 import { Player } from "../store/models";
 import _ from "lodash";
-import { calculateBmi, dateToAge, groupAge, groupLength, groupWeight, median } from "../utils/core";
+import { Bar } from "react-chartjs-2";
+import {
+    dateToAge,
+    groupAge,
+    groupLength,
+    groupWeight,
+    median,
+    sortObjectByKeyName
+} from "../utils/core";
 import { Col, Row } from "react-bootstrap";
 
 interface TeamStatsProps {
     team: Player[];
 }
+
+const createChartStruct = (distribution: any, label: string) => {
+    let labels = Object.keys(distribution);
+    let data = Object.keys(distribution).map((key: string) => {
+        return distribution[key].length;
+    });
+    return {
+        labels,
+        datasets: [
+            {
+                label,
+                data,
+                backgroundColor: "#009688"
+            }
+        ]
+    };
+};
 
 export const TeamStats = ({ team }: TeamStatsProps): JSX.Element => {
     const weights = team
@@ -36,9 +61,45 @@ export const TeamStats = ({ team }: TeamStatsProps): JSX.Element => {
     const avgHeight = _.meanBy(heights);
     const avgAge = _.meanBy(ages);
 
-    const lengthDistribution = _.groupBy(heights, groupLength);
-    const ageDistribution = _.groupBy(ages, groupAge);
-    const weightDistribution = _.groupBy(weights, groupWeight);
+    const lengthDistribution = sortObjectByKeyName(_.groupBy(heights, groupLength));
+    const ageDistribution = sortObjectByKeyName(_.groupBy(ages, groupAge));
+    const weightDistribution = sortObjectByKeyName(_.groupBy(weights, groupWeight));
+
+    const options = {
+        scales: {
+            y: {
+                display: false,
+                ticks: {
+                    beginAtZero: true
+                },
+                grid: {
+                    display: false
+                }
+            },
+            x: {
+                grid: {
+                    display: false
+                },
+                ticks: {
+                    font: {
+                        family: "Poppins",
+                        size: 12
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        family: "Poppins",
+                        size: 14,
+                        weight: 300
+                    }
+                }
+            }
+        }
+    };
 
     return (
         <div>
@@ -69,12 +130,31 @@ export const TeamStats = ({ team }: TeamStatsProps): JSX.Element => {
                         <dd>{median(heights)} cm</dd>
                     </dl>
                 </Col>
+                <Col>
+                    <h5>Distributions</h5>
+                    <p>
+                        <Bar
+                            type={"bar"}
+                            data={createChartStruct(lengthDistribution, "Längd (cm)")}
+                            options={options}
+                        />
+                    </p>
+                    <p>
+                        <Bar
+                            type={"bar"}
+                            data={createChartStruct(ageDistribution, "Ålder (år)")}
+                            options={options}
+                        />
+                    </p>
+                    <p>
+                        <Bar
+                            type={"bar"}
+                            data={createChartStruct(weightDistribution, "Vikt (kg)")}
+                            options={options}
+                        />
+                    </p>
+                </Col>
             </Row>
-
-            <h5>Distributions</h5>
-            <p>{JSON.stringify(lengthDistribution)}</p>
-            <p>{JSON.stringify(ageDistribution)}</p>
-            <p>{JSON.stringify(weightDistribution)}</p>
         </div>
     );
 };
