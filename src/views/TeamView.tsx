@@ -2,7 +2,6 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getTeamByCodeSelector } from "store/slices/teamsSlice";
-import { TeamIcon } from "components/TeamIcon";
 import { TeamPlayer } from "../components/TeamPlayer";
 import { Player } from "../store/models";
 

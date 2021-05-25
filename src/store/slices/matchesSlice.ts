@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk, RootState } from "store/index";
 import { firebase } from "services/firebase";
 import { Match } from "store/models";
+import * as _ from "lodash";
+import { createSelector } from "reselect";
 
 export const MATCHES_COLLECTION = "matches";
 
@@ -58,5 +60,16 @@ export const loadMatchesAsync = (): AppThunk => async (dispatch) => {
 
 const { updating, hasError, update } = matchesSlice.actions;
 export const matchStateSelector = (state: RootState): MatchesState => state.matches;
+
+export const getGroupMatchesSelector = (groupId: string) =>
+    createSelector([matchStateSelector], (matchesState) => {
+        const filtered = matchesState.matches.filter((match) => match.group === groupId);
+        const sorted = _.orderBy(filtered, ["matchDayRoundNr"], ["asc"]);
+        const roundGames = _.chain(sorted)
+            .groupBy("matchdayName")
+            .map((value, key) => ({ roundName: key, matches: value }))
+            .value();
+        return roundGames;
+    });
 
 export default matchesSlice.reducer;

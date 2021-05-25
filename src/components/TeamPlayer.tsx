@@ -35,7 +35,7 @@ export const TeamPlayer = ({ player }: TeamPlayerProps) => {
     return (
         <Row className={styles.row}>
             <Col xs={4}>
-                <img className={"img-fluid"} src={player.photo} loading={"lazy"} />
+                <img alt="" className={"img-fluid"} src={player.photo} loading={"lazy"} />
             </Col>
             <Col xs={8}>
                 <h5>{player.fullName}</h5>
