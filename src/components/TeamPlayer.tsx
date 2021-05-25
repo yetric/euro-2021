@@ -3,6 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import styles from "./styles/TeamPlayer.module.css";
 import { Link } from "react-router-dom";
 import { TeamIcon } from "./TeamIcon";
+import { calculateBmi, dateToAge } from "../utils/core";
 
 interface TeamPlayerProps {
     player: Player;
@@ -16,33 +17,19 @@ const Position: any = {
     4: "Anfallare"
 };
 
-function getAge(dateString: string) {
-    const today = new Date();
-    const birthDate = new Date(dateString);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-    return age;
-}
-
 export const TeamPlayer = ({ player, teamCode }: TeamPlayerProps) => {
     let { height, weight } = player.additionalInfo;
     let heightCm = parseInt(height);
-    const bmi =
-        !isNaN(parseInt(weight)) && !isNaN(heightCm)
-            ? Math.round(parseInt(weight) / (((heightCm / 100) * heightCm) / 100))
-            : null;
+    const bmi = calculateBmi(weight, heightCm);
 
     return (
         <Row className={styles.row}>
-            <Col xs={4} className={styles.img}>
+            <Col xs={3} className={styles.img}>
                 <img alt={""} className={"img-fluid"} src={player.photo} loading={"lazy"} />
                 <span>{player.playerNumber + " " + player.lastName}</span>
                 {teamCode && <TeamIcon size={"medium"} team={teamCode} />}
             </Col>
-            <Col xs={8}>
+            <Col xs={9}>
                 <dl className={styles.stats}>
                     <dt>Namn</dt>
                     <dd>
@@ -56,7 +43,7 @@ export const TeamPlayer = ({ player, teamCode }: TeamPlayerProps) => {
                     <dd>{Position[player.additionalInfo.position]}</dd>
 
                     <dt>Ålder</dt>
-                    <dd>{getAge(player.additionalInfo.birthdate)} år</dd>
+                    <dd>{dateToAge(player.additionalInfo.birthdate)} år</dd>
 
                     <dt>Vikt</dt>
                     <dd>{player.additionalInfo.weight || "-"}</dd>

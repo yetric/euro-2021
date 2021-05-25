@@ -8,6 +8,7 @@ import { Card, CardGroup } from "react-bootstrap";
 import { TeamIcon } from "components/TeamIcon";
 import { getTeamMatchesSelector } from "store/slices/matchesSlice";
 import { MatchList } from "components/MatchList";
+import { TeamStats } from "../components/TeamStats";
 
 export const TeamView = () => {
     const { teamId } = useParams<{ teamId: string }>();
@@ -24,13 +25,13 @@ export const TeamView = () => {
             </Helmet>
             <div>
                 <h1>
-                    <TeamIcon team={team.code} /> {team.name}
+                    <TeamIcon team={team.code} size={"medium"} /> {team.name}
                 </h1>
 
                 <CardGroup className={"mb-3"}>
                     <Card>
                         <Card.Header>Average Player</Card.Header>
-                        <Card.Body>Calculate avg player</Card.Body>
+                        <Card.Body>{teamPlayers && <TeamStats team={teamPlayers} />}</Card.Body>
                     </Card>
                     <Card>
                         <Card.Header>Squad Data</Card.Header>
