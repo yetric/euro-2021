@@ -1,0 +1,11 @@
+.group h5 {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.header {
+    background-color: #e0f2f1;
+    color: #37474f;
+    text-align: center;
+    text-transform: uppercase;
+}
