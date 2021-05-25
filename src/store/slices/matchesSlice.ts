@@ -64,7 +64,7 @@ export const matchStateSelector = (state: RootState): MatchesState => state.matc
 export const getGroupMatchesSelector = (groupId: string) =>
     createSelector([matchStateSelector], (matchesState) => {
         const filtered = matchesState.matches.filter((match) => match.group === groupId);
-        const sorted = _.orderBy(filtered, ["matchDayRoundNr"], ["asc"]);
+        const sorted = _.orderBy(filtered, ["matchDayRoundNr", "matchDate"], ["asc", "asc"]);
         const roundGames = _.chain(sorted)
             .groupBy("matchdayName")
             .map((value, key) => ({ roundName: key, matches: value }))
