@@ -2,16 +2,19 @@ import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getTeamByCodeSelector } from "store/slices/teamsSlice";
-import { TeamPlayer } from "../components/TeamPlayer";
-import { Player } from "../store/models";
+import { TeamPlayer } from "components/TeamPlayer";
+import { Player } from "store/models";
 import { Card, CardGroup } from "react-bootstrap";
-import { TeamIcon } from "../components/TeamIcon";
+import { TeamIcon } from "components/TeamIcon";
+import { getTeamMatchesSelector } from "store/slices/matchesSlice";
+import { MatchList } from "components/MatchList";
 
 export const TeamView = () => {
     const { teamId } = useParams<{ teamId: string }>();
     const team = useSelector(getTeamByCodeSelector(teamId));
+    const teamRoundMatches = useSelector(getTeamMatchesSelector(teamId));
 
-    if (!team) return <></>;
+    if (!team || !teamRoundMatches) return <></>;
 
     return (
         <>
@@ -37,6 +40,8 @@ export const TeamView = () => {
                         <Card.Body>Some fun fact about the team</Card.Body>
                     </Card>
                 </CardGroup>
+                <h2>Matches</h2>
+                <MatchList roundMatches={teamRoundMatches} />
 
                 <h2>Players</h2>
                 {team.players?.map((player: Player) => (

@@ -72,4 +72,17 @@ export const getGroupMatchesSelector = (groupId: string) =>
         return roundGames;
     });
 
+export const getTeamMatchesSelector = (code: string) =>
+    createSelector([matchStateSelector], (matchesState) => {
+        const filtered = matchesState.matches.filter(
+            (match) => match.homeTeam.code === code || match.awayTeam.code === code
+        );
+        const sorted = _.orderBy(filtered, ["matchDayRoundNr", "matchDate"], ["asc", "asc"]);
+        const roundGames = _.chain(sorted)
+            .groupBy("matchdayName")
+            .map((value, key) => ({ roundName: key, matches: value }))
+            .value();
+        return roundGames;
+    });
+
 export default matchesSlice.reducer;
