@@ -144,6 +144,7 @@ getEuroData().then((data) => {
             awayTeam: teamLookup[match.awayTeam],
             venue: venueLookup[match.venue]
         };
+        console.log(JSON.stringify(m));
         let newDoc = matchesCollection.doc(match.id); // todo slugify match
         batch.set(newDoc, m);
         return true;

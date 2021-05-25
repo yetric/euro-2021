@@ -8,10 +8,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useLoadGroups } from "store/hooks/useLoadGroups";
 import { useLoadTeams } from "store/hooks/useLoadTeams";
 import { SignupView } from "./views/SignupView";
+import { useLoadMatches } from "store/hooks/useLoadMatches";
 
 function App() {
     useLoadGroups();
     useLoadTeams();
+    useLoadMatches();
 
     return (
         <BrowserRouter>

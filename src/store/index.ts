@@ -7,10 +7,12 @@ import {
 } from '@reduxjs/toolkit';
 import groupsReducer from 'store/slices/groupsSlice';
 import teamsReducer from 'store/slices/teamsSlice';
+import matchesReducer from 'store/slices/matchesSlice';
 
 const combinedReducer = combineReducers({
   groups: groupsReducer,
   teams: teamsReducer,
+  matches: matchesReducer,
 });
 
 const middlewares = [...getDefaultMiddleware()];
