@@ -1,6 +1,7 @@
 import { Player } from "../store/models";
 import { Col, Row } from "react-bootstrap";
 import styles from "./styles/TeamPlayer.module.css";
+import { Link } from "react-router-dom";
 
 interface TeamPlayerProps {
     player: Player;
@@ -56,6 +57,9 @@ export const TeamPlayer = ({ player }: TeamPlayerProps) => {
                     <dt>BMI</dt>
                     <dd>{bmi || "-"}</dd>
                 </dl>
+                <p>
+                    <Link to={"/player/" + player.playerID}>Mer om {player.fullName}</Link>
+                </p>
             </Col>
         </Row>
     );
