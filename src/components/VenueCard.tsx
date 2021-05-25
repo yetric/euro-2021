@@ -9,13 +9,13 @@ interface VenueCardProps {
 
 export const VenueCard = (props: VenueCardProps): JSX.Element => {
     return (
-        <Card key={`card-venue-${props.venue.id}`}>
-            <img className="card-img-top" src={props.venue.photo} alt={props.venue.name} />
+        <Card key={`card-venue-${props.venue.id}`} className={"mb-3"}>
+            <img className="card-img-top" style={{width: "100%", height: "300px"}}src={props.venue.photo} alt={props.venue.name} />
             <Card.Body>
                 <Card.Title>{props.venue.name}</Card.Title>
             </Card.Body>
             <ListGroup className="list-group-flush">
-                <ListGroupItem className={styles.item}>{props.venue.city}</ListGroupItem>
+                <ListGroupItem className={styles.item}>{props.venue.city.length > 0 ? props.venue.city : "-"}</ListGroupItem>
                 <ListGroupItem className={styles.item}>
                     Capacity: {props.venue.capacity}
                 </ListGroupItem>

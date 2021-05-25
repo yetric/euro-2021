@@ -9,8 +9,10 @@ import groupsReducer from 'store/slices/groupsSlice';
 import teamsReducer from 'store/slices/teamsSlice';
 import matchesReducer from 'store/slices/matchesSlice';
 import venuesReducer from 'store/slices/venuesSlice';
+import authReducer from 'store/slices/authSlice';
 
 const combinedReducer = combineReducers({
+  auth: authReducer,
   groups: groupsReducer,
   teams: teamsReducer,
   matches: matchesReducer,
