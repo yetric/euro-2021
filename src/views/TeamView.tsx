@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getTeamByCodeSelector } from "store/slices/teamsSlice";
+import { getTeamByCodeSelector, getTeamPlayersSelector } from "store/slices/teamsSlice";
 import { TeamPlayer } from "components/TeamPlayer";
 import { Player } from "store/models";
 import { Card, CardGroup } from "react-bootstrap";
@@ -13,6 +13,7 @@ export const TeamView = () => {
     const { teamId } = useParams<{ teamId: string }>();
     const team = useSelector(getTeamByCodeSelector(teamId));
     const teamRoundMatches = useSelector(getTeamMatchesSelector(teamId));
+    const teamPlayers = useSelector(getTeamPlayersSelector(teamId));
 
     if (!team || !teamRoundMatches) return <></>;
 
@@ -44,7 +45,7 @@ export const TeamView = () => {
                 <MatchList roundMatches={teamRoundMatches} />
 
                 <h2>Players</h2>
-                {team.players?.map((player: Player) => (
+                {teamPlayers?.map((player: Player) => (
                     <TeamPlayer teamCode={team.code} key={player.playerID} player={player} />
                 ))}
             </div>

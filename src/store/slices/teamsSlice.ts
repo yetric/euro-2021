@@ -3,6 +3,7 @@ import { AppThunk, RootState } from "store/index";
 import { firebase } from "services/firebase";
 import { Team } from "store/models";
 import { createSelector } from "reselect";
+import * as _ from "lodash";
 
 export const TEAMS_COLLECTION = "teams";
 
@@ -57,7 +58,7 @@ export const loadTeamsAsync = (): AppThunk => async (dispatch) => {
                     teamID: doc.data().teamID,
                     code: doc.data().code,
                     name: doc.data().name,
-                    players: doc.data().players,
+                    players: doc.data().players
                 } as Team)
         );
 
@@ -71,9 +72,22 @@ const { updating, hasError, update } = teamsSlice.actions;
 export const teamsStateSelector = (state: RootState): TeamsState => state.teams;
 
 export const getTeamByCodeSelector = (code: string) =>
-  createSelector([teamsStateSelector], (teamsState) => {
-      return teamsState.teams.find((team) => code === team.code);
-  });
+    createSelector([teamsStateSelector], (teamsState) => {
+        return teamsState.teams.find((team) => code === team.code);
+    });
 
+/**
+ * Get Team Players sorted by Pos by a given team code
+ * @param code
+ */
+export const getTeamPlayersSelector = (code: string) =>
+    createSelector([getTeamByCodeSelector(code)], (team) => {
+        const sortedPlayers = _.orderBy(
+            team?.players,
+            ["additionalInfo.position", "lastName"],
+            ["asc", "asc"]
+        );
+        return sortedPlayers;
+    });
 
 export default teamsSlice.reducer;
