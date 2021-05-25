@@ -2,8 +2,19 @@
     color: #757575;
     font-size: 14px;
 }
-
+.table {
+    margin-bottom: 0;
+}
 .table td,
 .table th {
     font-size: 14px;
+}
+
+.table thead tr th {
+    border-bottom-color: inherit !important;
+}
+
+.table tbody tr:last-child td,
+.table tbody tr:last-child th {
+    border-bottom: none;
 }

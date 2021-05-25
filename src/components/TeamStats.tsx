@@ -104,33 +104,35 @@ export const TeamStats = ({ team }: TeamStatsProps): JSX.Element => {
 
     return (
         <div className={styles.wrap}>
-            <h5>Genomsnitt</h5>
-            <table className={"table mb-3 " + styles.table}>
-                <thead>
-                    <tr>
-                        <th>Värde</th>
-                        <th>Genomsnitt</th>
-                        <th>Median</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>Ålder</th>
-                        <td>{Math.round(avgAge)} år</td>
-                        <td>{median(ages)} år</td>
-                    </tr>
-                    <tr>
-                        <th>Vikt</th>
-                        <td>{Math.round(avgWeight)} kg</td>
-                        <td>{median(weights)} kg</td>
-                    </tr>
-                    <tr>
-                        <th>Längd</th>
-                        <td>{Math.round(avgHeight)} cm</td>
-                        <td>{median(heights)} cm</td>
-                    </tr>
-                </tbody>
-            </table>
+            <Card className={"mb-3"}>
+                <Card.Header>Genomsnitt</Card.Header>
+                <table className={"table " + styles.table}>
+                    <thead>
+                        <tr>
+                            <th>Värde</th>
+                            <th>Genomsnitt</th>
+                            <th>Median</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Ålder</th>
+                            <td>{Math.round(avgAge)} år</td>
+                            <td>{median(ages)} år</td>
+                        </tr>
+                        <tr>
+                            <th>Vikt</th>
+                            <td>{Math.round(avgWeight)} kg</td>
+                            <td>{median(weights)} kg</td>
+                        </tr>
+                        <tr>
+                            <th>Längd</th>
+                            <td>{Math.round(avgHeight)} cm</td>
+                            <td>{median(heights)} cm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </Card>
 
             <h5>Distribution</h5>
 
