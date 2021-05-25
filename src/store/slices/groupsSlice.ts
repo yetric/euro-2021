@@ -62,7 +62,7 @@ export const loadGroupsAsync = (): AppThunk => async (dispatch) => {
     }
 };
 
-export const { updating, hasError, update } = groupsSlice.actions;
+const { updating, hasError, update } = groupsSlice.actions;
 export const groupsStateSelector = (state: RootState): GroupsState => state.groups;
 
 export default groupsSlice.reducer;
