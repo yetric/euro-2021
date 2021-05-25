@@ -2,9 +2,11 @@ import { Player } from "../store/models";
 import { Col, Row } from "react-bootstrap";
 import styles from "./styles/TeamPlayer.module.css";
 import { Link } from "react-router-dom";
+import { TeamIcon } from "./TeamIcon";
 
 interface TeamPlayerProps {
     player: Player;
+    teamCode: string | null;
 }
 
 const Position: any = {
@@ -25,7 +27,7 @@ function getAge(dateString: string) {
     return age;
 }
 
-export const TeamPlayer = ({ player }: TeamPlayerProps) => {
+export const TeamPlayer = ({ player, teamCode }: TeamPlayerProps) => {
     let { height, weight } = player.additionalInfo;
     let heightCm = parseInt(height);
     const bmi =
@@ -38,6 +40,7 @@ export const TeamPlayer = ({ player }: TeamPlayerProps) => {
             <Col xs={4} className={styles.img}>
                 <img alt={""} className={"img-fluid"} src={player.photo} loading={"lazy"} />
                 <span>{player.playerNumber + " " + player.lastName}</span>
+                {teamCode && <TeamIcon size={"medium"} team={teamCode} />}
             </Col>
             <Col xs={8}>
                 <dl className={styles.stats}>

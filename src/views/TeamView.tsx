@@ -5,6 +5,7 @@ import { getTeamByCodeSelector } from "store/slices/teamsSlice";
 import { TeamPlayer } from "../components/TeamPlayer";
 import { Player } from "../store/models";
 import { Card, CardGroup } from "react-bootstrap";
+import { TeamIcon } from "../components/TeamIcon";
 
 export const TeamView = () => {
     const { teamId } = useParams<{ teamId: string }>();
@@ -39,7 +40,7 @@ export const TeamView = () => {
 
                 <h2>Players</h2>
                 {team.players?.map((player: Player) => (
-                    <TeamPlayer key={player.playerID} player={player} />
+                    <TeamPlayer teamCode={team.code} key={player.playerID} player={player} />
                 ))}
             </div>
         </>

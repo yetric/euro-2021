@@ -4,7 +4,6 @@
 }
 
 .flag {
-
     height: auto;
     margin-right: 4px;
 }
@@ -13,6 +12,10 @@
     position: relative;
     top: -1px;
     width: 18px;
+}
+
+.medium {
+    width: 28px;
 }
 
 .large {

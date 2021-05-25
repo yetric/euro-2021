@@ -48,3 +48,10 @@
     background-color: #01579b;
     color: #fff;
 }
+
+.img span ~ span {
+    bottom: 16px;
+    top: unset;
+    background-color: transparent;
+    right: 16px;
+}
