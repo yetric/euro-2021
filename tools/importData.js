@@ -33,8 +33,45 @@ const getEuroData = async () => {
         return { id: group.groupName.replace("Group ", ""), teamIds: teamIds };
     });
 
-    // const responseTeam = await statorium.getTeamById("390");
-    // console.log(JSON.stringify(responseTeam.data.team.players[0]));
+    // matches
+    const matchesResponse = await statorium.getMatches();
+    const matches = matchesResponse.data.calendar.matchdays.flatMap((matchday, index) => {
+        return matchday.matches.map((match) => {
+            return {
+                id: match.matchID,
+                matchDayRoundNr: index + 1,
+                matchdayName: matchday.matchdayName,
+                matchDayType: matchday.matchdayType,
+                matchStatus: match.matchStatus.statusID,
+                matchDate: match.matchDate,
+                matchTime: match.matchTime,
+                venue: match.matchVenue.venueID,
+                homeTeam: match.homeParticipant.participantID,
+                awayTeam: match.awayParticipant.participantID,
+                homeScore: match.homeParticipant.score,
+                awayScore: match.awayParticipant.score
+            };
+        });
+    });
+    const venueIDs = matches.map((m) => m.venue);
+    const venuesUniqueIds = [...new Set(venueIDs)];
+    console.log(venuesUniqueIds);
+
+    const fetchVenue = async (id) => {
+        const r = await statorium.getVenueById(id);
+        return {
+            id: r.data.venue.id,
+            name: r.data.venue.venueName,
+            city: r.data.venue.venueCity,
+            capacity: r.data.venue.additionalInfo.capacity,
+            opened: r.data.venue.additionalInfo.opened,
+            geolocation: { lng: r.data.venue.venueCoordX, lat: r.data.venue.venueCoordY },
+            photo: r.data.venue.photo
+        };
+    };
+
+    const venuesPromises = venuesUniqueIds.map((v) => fetchVenue(v));
+    const venues = await Promise.all(venuesPromises);
 
     const fetchTeam = async (id) => {
         const r = await statorium.getTeamById(id);
@@ -42,15 +79,14 @@ const getEuroData = async () => {
             teamID: r.data.team.teamID,
             name: r.data.team.teamName,
             code: r.data.team.shortName,
-            players: r.data.team.players,
+            players: r.data.team.players
         };
     };
 
     const allTeamPromises = groups.flatMap((g) => g.teamIds.map((t) => fetchTeam(t)));
-
     const teams = await Promise.all(allTeamPromises);
 
-    return { groups, teams };
+    return { groups, teams, matches, venues };
 };
 
 getEuroData().then((data) => {
@@ -62,6 +98,13 @@ getEuroData().then((data) => {
         {},
         ...data.teams.map((s) => ({ [s.teamID]: { teamID: s.teamID, name: s.name, code: s.code } }))
     );
+
+    // build venue lookup
+    const venueLookup = Object.assign(
+      {},
+      ...data.venues.map((v) => ({ [v.id]: { id: v.id, name: v.name, city: v.city } }))
+    );
+
 
     // Group data
     const groupCollection = db.collection("groups");
@@ -76,6 +119,14 @@ getEuroData().then((data) => {
         return true;
     });
 
+    // Venues data
+    const venuesCollection = db.collection("venues");
+    data.venues.map((venue) => {
+        let newDoc = venuesCollection.doc(venue.id);
+        batch.set(newDoc, venue);
+        return true;
+    });
+
     // Team data
     const teamCollection = db.collection("teams");
     data.teams.map((team) => {
@@ -83,6 +134,22 @@ getEuroData().then((data) => {
         batch.set(newDoc, team);
         return true;
     });
+
+    // Matches data
+    const matchesCollection = db.collection("matches");
+    data.matches.map((match) => {
+        const m = {
+            ...match,
+            homeTeam: teamLookup[match.homeTeam],
+            awayTeam: teamLookup[match.awayTeam],
+            venue: venueLookup[match.venue]
+        };
+        let newDoc = matchesCollection.doc(match.id); // todo slugify match
+        batch.set(newDoc, m);
+        return true;
+    });
+
+    console.log("Current insert batch count" + batch._opCount);
 
     batch
         .commit()

@@ -5,8 +5,18 @@ const getStandingsBySeasonId = (seasonId) => {
 }
 
 const getTeamByID = (teamId) => {
-    return get("/teams/" + teamId + "/", {season_id: 40}); // uefa euro 2020
+    return get("/teams/" + teamId + "/", {season_id: 40});
 }
+
+const getVenueByID = (venueId) => {
+    return get("/venues/" + venueId + "/", {});
+}
+
+
+const getMatches = () => {
+    return get("/matches/", {season_id: 40});  // uefa euro 2020
+}
+
 
 const get = (url, extraParams) => {
     const baseUrl = "https://api.statorium.com/api/v1";
@@ -18,3 +28,5 @@ const get = (url, extraParams) => {
 
 exports.getStandingsBySeasonId = getStandingsBySeasonId;
 exports.getTeamById = getTeamByID;
+exports.getMatches = getMatches;
+exports.getVenueById = getVenueByID;
