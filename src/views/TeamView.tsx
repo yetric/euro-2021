@@ -8,6 +8,7 @@ import { TeamIcon } from "components/TeamIcon";
 import { getTeamMatchesSelector } from "store/slices/matchesSlice";
 import { MatchList } from "components/MatchList";
 import { TeamStats } from "../components/TeamStats";
+import { Col, Row } from "react-bootstrap";
 
 export const TeamView = () => {
     const { teamId } = useParams<{ teamId: string }>();
@@ -22,21 +23,24 @@ export const TeamView = () => {
             <Helmet>
                 <title>{team.name}</title>
             </Helmet>
-            <div>
-                <h1>
-                    <TeamIcon team={team.code} size={"medium"} /> {team.name}
-                </h1>
+            <Row>
+                <Col lg={9}>
+                    <h1>
+                        <TeamIcon team={team.code} size={"medium"} /> {team.name}
+                    </h1>
 
-                <TeamStats team={teamPlayers} />
+                    <h2>Matches</h2>
+                    <MatchList roundMatches={teamRoundMatches} />
 
-                <h2>Matches</h2>
-                <MatchList roundMatches={teamRoundMatches} />
-
-                <h2>Players</h2>
-                {teamPlayers?.map((player: Player) => (
-                    <TeamPlayer teamCode={team.code} key={player.playerID} player={player} />
-                ))}
-            </div>
+                    <h2>Players</h2>
+                    {teamPlayers?.map((player: Player) => (
+                        <TeamPlayer teamCode={team.code} key={player.playerID} player={player} />
+                    ))}
+                </Col>
+                <Col lg={3}>
+                    <TeamStats team={teamPlayers} />
+                </Col>
+            </Row>
         </>
     );
 };

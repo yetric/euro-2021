@@ -1,6 +1,7 @@
 import { Player } from "../store/models";
 import _ from "lodash";
 import { Bar } from "react-chartjs-2";
+import styles from "./styles/TeamStats.module.css";
 import {
     dateToAge,
     groupAge,
@@ -9,7 +10,7 @@ import {
     median,
     sortObjectByKeyName
 } from "../utils/core";
-import { Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 
 interface TeamStatsProps {
     team: Player[];
@@ -26,7 +27,7 @@ const createChartStruct = (distribution: any, label: string) => {
             {
                 label,
                 data,
-                backgroundColor: "#009688"
+                backgroundColor: "#80CBC4"
             }
         ]
     };
@@ -102,59 +103,64 @@ export const TeamStats = ({ team }: TeamStatsProps): JSX.Element => {
     };
 
     return (
-        <div>
-            <Row>
-                <Col>
-                    <h5>Average</h5>
-                    <dl>
-                        <dt>Ålder</dt>
-                        <dd>{Math.round(avgAge)} år</dd>
+        <div className={styles.wrap}>
+            <h5>Genomsnitt</h5>
+            <table className={"table mb-3 " + styles.table}>
+                <thead>
+                    <tr>
+                        <th>Värde</th>
+                        <th>Genomsnitt</th>
+                        <th>Median</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Ålder</th>
+                        <td>{Math.round(avgAge)} år</td>
+                        <td>{median(ages)} år</td>
+                    </tr>
+                    <tr>
+                        <th>Vikt</th>
+                        <td>{Math.round(avgWeight)} kg</td>
+                        <td>{median(weights)} kg</td>
+                    </tr>
+                    <tr>
+                        <th>Längd</th>
+                        <td>{Math.round(avgHeight)} cm</td>
+                        <td>{median(heights)} cm</td>
+                    </tr>
+                </tbody>
+            </table>
 
-                        <dt>Vikt</dt>
-                        <dd>{Math.round(avgWeight)} kg</dd>
+            <h5>Distribution</h5>
 
-                        <dt>Längd</dt>
-                        <dd>{Math.round(avgHeight)} cm</dd>
-                    </dl>
-                </Col>
-                <Col>
-                    <h5>Median</h5>
-                    <dl>
-                        <dt>Ålder</dt>
-                        <dd>{median(ages)} år</dd>
-
-                        <dt>Vikt</dt>
-                        <dd>{median(weights)} kg</dd>
-
-                        <dt>Längd</dt>
-                        <dd>{median(heights)} cm</dd>
-                    </dl>
-                </Col>
-                <Col>
-                    <h5>Distributions</h5>
-                    <p>
-                        <Bar
-                            type={"bar"}
-                            data={createChartStruct(lengthDistribution, "Längd (cm)")}
-                            options={options}
-                        />
-                    </p>
-                    <p>
-                        <Bar
-                            type={"bar"}
-                            data={createChartStruct(ageDistribution, "Ålder (år)")}
-                            options={options}
-                        />
-                    </p>
-                    <p>
-                        <Bar
-                            type={"bar"}
-                            data={createChartStruct(weightDistribution, "Vikt (kg)")}
-                            options={options}
-                        />
-                    </p>
-                </Col>
-            </Row>
+            <Card className={"mb-3"}>
+                <Card.Body>
+                    <Bar
+                        type={"bar"}
+                        data={createChartStruct(lengthDistribution, "Längd (cm)")}
+                        options={options}
+                    />
+                </Card.Body>
+            </Card>
+            <Card className={"mb-3"}>
+                <Card.Body>
+                    <Bar
+                        type={"bar"}
+                        data={createChartStruct(ageDistribution, "Ålder (år)")}
+                        options={options}
+                    />
+                </Card.Body>
+            </Card>
+            <Card>
+                <Card.Body>
+                    <Bar
+                        type={"bar"}
+                        data={createChartStruct(weightDistribution, "Vikt (kg)")}
+                        options={options}
+                    />
+                </Card.Body>
+            </Card>
         </div>
     );
 };

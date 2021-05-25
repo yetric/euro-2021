@@ -1,0 +1,9 @@
+.wrap h5 small {
+    color: #757575;
+    font-size: 14px;
+}
+
+.table td,
+.table th {
+    font-size: 14px;
+}

@@ -1,7 +1,6 @@
 .row {
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e3e3e3;
 }
 .stats {
     width: 100%;
@@ -29,8 +28,8 @@
 
 .img {
     background: linear-gradient(#e8f5e9, #c8e6c9);
-    border-radius: 12px;
     position: relative;
+    margin-bottom: 16px;
 }
 
 .img img {
@@ -40,18 +39,20 @@
 
 .img span {
     position: absolute;
-    top: 16px;
+    top: 0;
+    left: 0;
     display: block;
     padding: 6px;
     font-size: 14px;
     text-transform: uppercase;
-    background-color: #01579b;
+    background-color: rgba(1, 87, 155, 0.75);
     color: #fff;
 }
 
 .img span ~ span {
-    bottom: 16px;
+    bottom: 0;
     top: unset;
+    left: unset;
     background-color: transparent;
-    right: 16px;
+    right: 0;
 }

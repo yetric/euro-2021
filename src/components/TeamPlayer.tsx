@@ -24,12 +24,12 @@ export const TeamPlayer = ({ player, teamCode }: TeamPlayerProps) => {
 
     return (
         <Row className={styles.row}>
-            <Col xs={3} className={styles.img}>
+            <Col md={5} className={styles.img}>
                 <img alt={""} className={"img-fluid"} src={player.photo} loading={"lazy"} />
                 <span>{player.playerNumber + " " + player.lastName}</span>
                 {teamCode && <TeamIcon size={"medium"} team={teamCode} />}
             </Col>
-            <Col xs={9}>
+            <Col md={7}>
                 <dl className={styles.stats}>
                     <dt>Namn</dt>
                     <dd>
