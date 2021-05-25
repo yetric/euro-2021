@@ -50,10 +50,11 @@ export interface TeamShort {
 export interface Match {
     id: string;
     group: string;
-    matchDayRoundNr: number;
+    matchDayRoundNr: number; // group stage round nr, todo handle quarterfinals etc
+    matchDayPlayoff: string; //0=Group Stage, 1=Playoff
     matchdayName: string;
     matchDayType: string;
-    matchStatus: string;
+    matchStatus: string; //0=Upcoming 1=Played, -1=Livematch
     matchDate: string;
     matchTime: string;
     venue: VenueShort;

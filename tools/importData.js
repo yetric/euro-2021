@@ -42,7 +42,8 @@ const getEuroData = async () => {
                 matchDayRoundNr: index + 1,
                 matchdayName: matchday.matchdayName,
                 matchDayType: matchday.matchdayType,
-                matchStatus: match.matchStatus.statusID,
+                matchDayPlayoff: matchday.matchdayPlayoff, //0	Ordinary, 1 = Playoff
+                matchStatus: match.matchStatus.statusID, // 0 = upcoming 1=played, -1 Livematch
                 matchDate: match.matchDate,
                 matchTime: match.matchTime,
                 venue: match.matchVenue.venueID,
