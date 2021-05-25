@@ -30,9 +30,21 @@
 .img {
     background: linear-gradient(#e8f5e9, #c8e6c9);
     border-radius: 12px;
+    position: relative;
 }
 
 .img img {
     display: block;
     margin: 0 auto;
+}
+
+.img span {
+    position: absolute;
+    top: 16px;
+    display: block;
+    padding: 6px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #01579b;
+    color: #fff;
 }

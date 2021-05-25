@@ -36,7 +36,8 @@ export const TeamPlayer = ({ player }: TeamPlayerProps) => {
     return (
         <Row className={styles.row}>
             <Col xs={4} className={styles.img}>
-                <img alt="" className={"img-fluid"} src={player.photo} loading={"lazy"} />
+                <img alt={""} className={"img-fluid"} src={player.photo} loading={"lazy"} />
+                <span>{player.playerNumber + " " + player.lastName}</span>
             </Col>
             <Col xs={8}>
                 <dl className={styles.stats}>
@@ -44,6 +45,10 @@ export const TeamPlayer = ({ player }: TeamPlayerProps) => {
                     <dd>
                         <Link to={"/player/" + player.playerID}>{player.fullName}</Link>
                     </dd>
+
+                    <dt>Nummer</dt>
+                    <dd>{player.playerNumber.length > 0 ? player.playerNumber : "-"}</dd>
+
                     <dt>Position</dt>
                     <dd>{Position[player.additionalInfo.position]}</dd>
 
