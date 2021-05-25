@@ -3,9 +3,64 @@
     font-size: 18px;
 }
 
+.group small {
+    font-size: 12px;
+}
+
+.group small a {
+    color: inherit;
+}
+
+.group h5 a {
+    color: inherit;
+}
+
 .header {
-    background-color: #e0f2f1;
+    background-color: #fff8f1;
     color: #37474f;
     text-align: center;
     text-transform: uppercase;
+}
+
+.actions {
+    display: flex;
+    align-content: stretch;
+    justify-content: center;
+}
+
+.actions > div {
+    text-align: center;
+    flex: 1;
+    margin: 16px 0;
+}
+
+.odds {
+    list-style: none;
+
+    padding: 0;
+    border: 1px solid #ccc;
+    display: flex;
+    border-radius: 3px;
+}
+
+.odds li {
+    flex: 1;
+    font-size: 14px;
+    line-height: 32px;
+    background-color: #fffcfc;
+}
+
+.odds li ~ li {
+    border-left: 1px solid #ccc;
+}
+
+.tv a {
+    color: #333;
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.extra {
+    font-size: 14px;
+    line-height: 32px;
 }

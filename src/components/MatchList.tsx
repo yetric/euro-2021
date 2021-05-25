@@ -5,6 +5,7 @@ import { TeamIcon } from "components/TeamIcon";
 import { Match } from "store/models";
 import styles from "./styles/MatchList.module.css";
 import { Link } from "react-router-dom";
+import { IoCalendarOutline, IoTvOutline } from "react-icons/io5";
 
 interface RoundMatches {
     roundName: string;
@@ -29,14 +30,12 @@ export const MatchList = (props: MatchListProps): JSX.Element => {
                                 <Col sm={4} className="text-center align-self-center">
                                     <h5>
                                         <Link to={"/team/" + match.homeTeam.code}>
+                                            <TeamIcon team={match.homeTeam.code} size={"small"} />
                                             {match.homeTeam.name}
                                         </Link>
                                     </h5>
                                 </Col>
-                                <Col sm={1} className="text-center align-self-center">
-                                    <TeamIcon team={match.homeTeam.code} size={"medium"} />
-                                </Col>
-                                <Col sm={2} className="text-center align-self-center">
+                                <Col sm={4} className="text-center align-self-center">
                                     <small>{match.matchDate}</small>
                                     <h5>{match.matchTime}</h5>
                                     <small>
@@ -45,17 +44,32 @@ export const MatchList = (props: MatchListProps): JSX.Element => {
                                         </Link>
                                     </small>
                                 </Col>
-                                <Col sm={1} className="text-center align-self-center">
-                                    <TeamIcon team={match.awayTeam.code} size={"medium"} />
-                                </Col>
                                 <Col sm={4} className="text-center align-self-center">
                                     <h5>
                                         <Link to={"/team/" + match.awayTeam.code}>
+                                            <TeamIcon team={match.awayTeam.code} size={"small"} />
                                             {match.awayTeam.name}
                                         </Link>
                                     </h5>
                                 </Col>
                             </Row>
+                            <div className={styles.actions}>
+                                <div className={styles.tv}>
+                                    <a href={"#"}>
+                                        <IoTvOutline /> Visas på SVT Play
+                                    </a>
+                                </div>
+                                <div>
+                                    <ul className={styles.odds}>
+                                        <li>1. 3.05</li>
+                                        <li>X. 4.5</li>
+                                        <li>2. 1.25</li>
+                                    </ul>
+                                </div>
+                                <div className={styles.extra}>
+                                    <IoCalendarOutline /> Lägg till i kalender
+                                </div>
+                            </div>
                         </ListGroup.Item>
                     ))}
                 </Fragment>
