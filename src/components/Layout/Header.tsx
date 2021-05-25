@@ -17,7 +17,10 @@ export const Header = (): JSX.Element => {
                 {authState.login.isLoggedIn ? (
                     <>
                         <Link to={"/you"}>
-                            <IoPersonCircle /> {authState.login.user?.email}
+                            <IoPersonCircle />{" "}
+                            {authState.login.user?.displayName
+                                ? authState.login.user?.displayName
+                                : authState.login.user?.email}
                         </Link>
                         <LogoutButton />
                     </>

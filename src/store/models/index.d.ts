@@ -1,7 +1,7 @@
 export interface User {
     uid: string;
     email: string;
-    // displayName
+    displayName: string;
 }
 
 export interface Group {

@@ -4,5 +4,11 @@ import { authStateSelector } from "store/slices/authSlice";
 export const ProfileView = (): JSX.Element => {
     const authState = useSelector(authStateSelector);
 
-    return <div>ProfileView User with id {authState.login.user?.uid}</div>;
-}
+    if (!authState.login.isLoggedIn) return <>login please</>;
+
+    return (
+        <div>
+            ProfileView <pre>{JSON.stringify(authState.login.user)}</pre>
+        </div>
+    );
+};

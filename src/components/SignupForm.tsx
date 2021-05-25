@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { LoadingButton } from "components/LoadingButton";
 import { EMAIL_PATTERN } from "utils/validation-patterns";
 import { useDispatch, useSelector } from "react-redux";
-import { authStateSelector, createUserWithEmailAndPassword } from "store/slices/authSlice";
+import { authStateSelector, createUserAccount } from "store/slices/authSlice";
 
 export interface SignupFormFields {
     displayName: string;
@@ -23,7 +23,7 @@ export const SignupForm = (): JSX.Element => {
     } = useForm<SignupFormFields>();
 
     const onSubmit = (values: SignupFormFields) => {
-        dispatch(createUserWithEmailAndPassword(values.email, values.password));
+        dispatch(createUserAccount(values.displayName, values.email, values.password));
     };
 
     const serverError = (error: string | undefined) => {

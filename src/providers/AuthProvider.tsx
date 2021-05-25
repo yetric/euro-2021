@@ -25,7 +25,13 @@ export const AuthProvider = (props: AuthProviderProps) => {
         const unsubscribe = firebase.auth().onAuthStateChanged(
             (user) => {
                 if (user) {
-                    dispatch(loginSuccess({ email: user.email, uid: user.uid } as User));
+                    dispatch(
+                        loginSuccess({
+                            email: user.email,
+                            uid: user.uid,
+                            displayName: user.displayName
+                        } as User)
+                    );
                 } else {
                     dispatch(logout());
                 }

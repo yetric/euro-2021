@@ -121,18 +121,22 @@ export const logoutAsync = (): AppThunk => async () => {
 };
 
 /**
- * Create User With Email And Password
+ * Create User Account - DisplayName, Email And Password
+ * @param displayName
  * @param email
  * @param password
  */
-export const createUserWithEmailAndPassword =
-    (email: string, password: string): AppThunk =>
+export const createUserAccount =
+    (displayName: string, email: string, password: string): AppThunk =>
     async (dispatch) => {
         try {
             dispatch(registerStart());
-            await firebase.auth().createUserWithEmailAndPassword(email, password);
+            const userCred = await firebase.auth().createUserWithEmailAndPassword(email, password);
+            await userCred.user?.updateProfile({
+                displayName: displayName
+            });
             dispatch(registerSuccess());
-            // auto login
+            // auto login user
             dispatch(loginAsync(email, password));
         } catch (error) {
             dispatch(registerError(error.message));
