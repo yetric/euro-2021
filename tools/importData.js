@@ -99,6 +99,12 @@ getEuroData().then((data) => {
         ...data.teams.map((s) => ({ [s.teamID]: { teamID: s.teamID, name: s.name, code: s.code } }))
     );
 
+    // build Match team to groupID lookup   '385': 'C',
+    const matchGroupLookup = Object.assign(
+      {},
+      ...data.groups.flatMap((group) => group.teamIds.map((id) => ({ [id]: group.id })))
+    );
+
     // build venue lookup
     const venueLookup = Object.assign(
       {},
@@ -142,9 +148,9 @@ getEuroData().then((data) => {
             ...match,
             homeTeam: teamLookup[match.homeTeam],
             awayTeam: teamLookup[match.awayTeam],
-            venue: venueLookup[match.venue]
+            venue: venueLookup[match.venue],
+            group: matchGroupLookup[match.homeTeam] // todo handle playoff
         };
-        console.log(JSON.stringify(m));
         let newDoc = matchesCollection.doc(match.id); // todo slugify match
         batch.set(newDoc, m);
         return true;

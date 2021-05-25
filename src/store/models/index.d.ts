@@ -49,6 +49,7 @@ export interface TeamShort {
 
 export interface Match {
     id: string;
+    group: string;
     matchDayRoundNr: number;
     matchdayName: string;
     matchDayType: string;
