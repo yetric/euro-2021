@@ -1,3 +1,9 @@
+export interface User {
+    uid: string;
+    email: string;
+    // displayName
+}
+
 export interface Group {
     id: string;
     teamsIds: string[];

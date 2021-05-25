@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { firebase } from "services/firebase";
 import { AppThunk, RootState } from "store/index";
+import { User } from "store/models";
 
 export interface RegisterState {
     isRegistering: boolean;
@@ -9,8 +10,17 @@ export interface RegisterState {
     error?: string;
 }
 
+export interface LoginState {
+    isLoggingIn: boolean;
+    isLoggedIn: boolean;
+    user: User | null;
+    hasError: boolean;
+    error?: string;
+}
+
 export interface AuthState {
     register: RegisterState;
+    login: LoginState;
 }
 
 const initialState = {
@@ -19,7 +29,14 @@ const initialState = {
         isRegistered: false,
         hasError: false,
         error: ""
-    } as RegisterState
+    } as RegisterState,
+    login: {
+        isLoggingIn: false,
+        isLoggedIn: false,
+        hasError: false,
+        user: null,
+        error: ""
+    } as LoginState
 } as AuthState;
 
 export const authSlice = createSlice({
@@ -40,11 +57,68 @@ export const authSlice = createSlice({
             state.register.isRegistered = false;
             state.register.hasError = true;
             state.register.error = `${action.payload}`;
+        },
+        loginStart: (state) => {
+            state.login.isLoggingIn = true;
+            state.login.hasError = false;
+            state.login.error = "";
+        },
+        loginSuccess: (state, action: PayloadAction<User>) => {
+            state.login.isLoggingIn = false;
+            state.login.isLoggedIn = true;
+            state.login.user = action.payload;
+        },
+        loginError: (state, action: PayloadAction<string>) => {
+            state.login.isLoggingIn = false;
+            state.login.isLoggedIn = false;
+            state.login.hasError = true;
+            state.login.error = `${action.payload}`;
+        },
+        logout: (state) => {
+            state.login.isLoggingIn = false;
+            state.login.isLoggedIn = false;
+            state.login.user = null;
         }
     }
 });
 
-const { registerSuccess, registerStart, registerError } = authSlice.actions;
+export const {
+    registerSuccess,
+    registerStart,
+    registerError,
+    loginStart,
+    loginSuccess,
+    loginError,
+    logout
+} = authSlice.actions;
+
+/**
+ * Login async
+ * @param email
+ * @param password
+ */
+export const loginAsync =
+    (email: string, password: string): AppThunk =>
+    async (dispatch) => {
+        try {
+            dispatch(loginStart());
+            await firebase.auth().signInWithEmailAndPassword(email, password);
+        } catch (error) {
+            alert(error.code + " " + error.message); // todo better toasting msg system
+            dispatch(loginError(error.message));
+        }
+    };
+
+/**
+ * Logout async
+ */
+export const logoutAsync = (): AppThunk => async () => {
+    try {
+        await firebase.auth().signOut();
+    } catch (error) {
+        console.error(error.message);
+    }
+};
 
 /**
  * Create User With Email And Password
@@ -56,11 +130,10 @@ export const createUserWithEmailAndPassword =
     async (dispatch) => {
         try {
             dispatch(registerStart());
-            const userCredential = await firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password);
-            console.log(userCredential);
+            await firebase.auth().createUserWithEmailAndPassword(email, password);
             dispatch(registerSuccess());
+            // auto login
+            dispatch(loginAsync(email, password));
         } catch (error) {
             dispatch(registerError(error.message));
             console.log(error);

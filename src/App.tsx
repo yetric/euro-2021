@@ -11,6 +11,8 @@ import { SignupView } from "./views/SignupView";
 import { useLoadMatches } from "store/hooks/useLoadMatches";
 import { PlayerView } from "./views/PlayerView";
 import { VenuesListView } from "views/VenuesListView";
+import { LoginView } from "views/LoginView";
+import { AuthProvider } from "providers/AuthProvider";
 
 function App() {
     useLoadGroups();
@@ -19,17 +21,20 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Layout>
-                <Switch>
-                    <Route exact path="/" component={StartView} />
-                    <Route exact path="/group/:groupId" component={GroupView} />
-                    <Route exact path="/team/:teamId" component={TeamView} />
-                    <Route exact path="/venues" component={VenuesListView} />
-                    <Route exact path="/player/:playerId" component={PlayerView} />
-                    <Route exact path="/you" component={ProfileView} />
-                    <Route exact path="/signup" component={SignupView} />
-                </Switch>
-            </Layout>
+            <AuthProvider>
+                <Layout>
+                    <Switch>
+                        <Route exact path="/" component={StartView} />
+                        <Route exact path="/login" component={LoginView} />
+                        <Route exact path="/group/:groupId" component={GroupView} />
+                        <Route exact path="/team/:teamId" component={TeamView} />
+                        <Route exact path="/venues" component={VenuesListView} />
+                        <Route exact path="/player/:playerId" component={PlayerView} />
+                        <Route exact path="/you" component={ProfileView} />
+                        <Route exact path="/signup" component={SignupView} />
+                    </Switch>
+                </Layout>
+            </AuthProvider>
         </BrowserRouter>
     );
 }
