@@ -3,27 +3,29 @@ import { useSelector } from "react-redux";
 import { venuesStateSelector } from "store/slices/venuesSlice";
 import { Venue } from "store/models";
 import { useLoadVenues } from "store/hooks/useLoadVenues";
+import { VenueCard } from "components/VenueCard";
+import * as React from "react";
+import { Col, Row } from "react-bootstrap";
 
 export const VenuesListView = () => {
-  useLoadVenues();
-  const venuesState = useSelector(venuesStateSelector);
+    useLoadVenues();
+    const venuesState = useSelector(venuesStateSelector);
 
-  if (venuesState.isLoading) return <div>Loading</div>;
+    if (venuesState.isLoading) return <div>Loading</div>;
 
-  return (
-    <>
-      <Helmet>
-        <title>Venues</title>
-      </Helmet>
-      <div>
-        {venuesState.venues.map((venue: Venue) => (
-          <div key={venue.id}>
-            <img alt={venue.name} className={"img-fluid"} src={venue.photo} loading={"lazy"} />
-            <br />
-            {venue.name} {venue.city} {venue.capacity}
-          </div>
-        ))}
-      </div>
-    </>
-  );
+    return (
+        <>
+            <Helmet>
+                <title>Venues</title>
+            </Helmet>
+            <h2>Venues</h2>
+            <Row>
+                {venuesState.venues.map((venue: Venue, index) => (
+                    <Col xs={12} sm={12} md={4} key={index}>
+                        <VenueCard key={venue.id} venue={venue} />
+                    </Col>
+                ))}
+            </Row>
+        </>
+    );
 };
