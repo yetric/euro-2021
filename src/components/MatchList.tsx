@@ -28,29 +28,33 @@ export const MatchList = (props: MatchListProps): JSX.Element => {
                         <ListGroup.Item key={match.id}>
                             <Row className="text-center align-self-center">
                                 <Col sm={4} className="text-center align-self-center">
-                                    <h5>
-                                        <Link to={"/team/" + match.homeTeam.code}>
-                                            <TeamIcon team={match.homeTeam.code} size={"small"} />
-                                            {match.homeTeam.name}
-                                        </Link>
-                                    </h5>
+                                    <Link to={"/team/" + match.homeTeam.code}>
+                                        <TeamIcon team={match.homeTeam.code} size={"small"} />
+                                        {match.homeTeam.name}
+                                    </Link>
                                 </Col>
                                 <Col sm={4} className="text-center align-self-center">
-                                    <small>{match.matchDate}</small>
-                                    <h5>{match.matchTime}</h5>
+                                    <p className={styles.result}>0 - 0</p>
+                                </Col>
+                                <Col sm={4} className="text-center align-self-center">
+                                    <Link to={"/team/" + match.awayTeam.code}>
+                                        <TeamIcon team={match.awayTeam.code} size={"small"} />
+                                        {match.awayTeam.name}
+                                    </Link>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col className={"text-center"}>
+                                    <small>
+                                        {match.matchDate} - {match.matchTime}
+                                    </small>
+                                </Col>
+                                <Col className={"text-center"}>
                                     <small>
                                         <Link to={"/venues/" + match.venue.id}>
                                             {match.venue.name}
                                         </Link>
                                     </small>
-                                </Col>
-                                <Col sm={4} className="text-center align-self-center">
-                                    <h5>
-                                        <Link to={"/team/" + match.awayTeam.code}>
-                                            <TeamIcon team={match.awayTeam.code} size={"small"} />
-                                            {match.awayTeam.name}
-                                        </Link>
-                                    </h5>
                                 </Col>
                             </Row>
                             <div className={styles.actions}>

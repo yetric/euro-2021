@@ -64,3 +64,22 @@
     font-size: 14px;
     line-height: 32px;
 }
+
+.date,
+.time,
+.result,
+.venue {
+    margin: 0;
+}
+
+.date {
+    font-size: 14px;
+}
+
+.result {
+    font-size: 32px;
+}
+
+.venue {
+    font-size: 12px;
+}
