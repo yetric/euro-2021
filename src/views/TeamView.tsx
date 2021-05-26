@@ -21,7 +21,7 @@ export const TeamView = () => {
     return (
         <>
             <Helmet>
-                <title>{team.name}</title>
+                <title>{team.name} - Euro 2020 (2021) - Fotbollsfeber.se</title>
             </Helmet>
             <Row>
                 <Col lg={9}>
