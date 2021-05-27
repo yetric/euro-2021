@@ -27,7 +27,7 @@
 }
 
 .img {
-    background: linear-gradient(#e8f5e9, #c8e6c9);
+    background: linear-gradient(#c8e6c9, #ffffff);
     position: relative;
     margin-bottom: 16px;
 }
@@ -39,20 +39,20 @@
 
 .img span {
     position: absolute;
-    top: 0;
+    top: 12px;
     left: 0;
     display: block;
     padding: 6px;
-    font-size: 14px;
+    font-weight: 900;
     text-transform: uppercase;
-    background-color: rgba(1, 87, 155, 0.75);
+    background-color: rgba(40, 44, 52, 0.85);
     color: #fff;
 }
 
 .img span ~ span {
-    bottom: 0;
+    bottom: 8px;
     top: unset;
     left: unset;
     background-color: transparent;
-    right: 0;
+    right: 8px;
 }

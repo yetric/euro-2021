@@ -95,3 +95,5 @@ export const sortObjectByKeyName = (obj: any) => {
             return result;
         }, {});
 };
+
+export const isValidNumber = (val: number | null) => val && !isNaN(val) && isFinite(val);

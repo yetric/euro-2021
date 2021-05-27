@@ -59,7 +59,7 @@ export const MatchList = (props: MatchListProps): JSX.Element => {
                             </Row>
                             <div className={styles.actions}>
                                 <div className={styles.tv}>
-                                    <a href={"#"}>
+                                    <a href={"#tv-shows"}>
                                         <IoTvOutline /> Visas på SVT Play
                                     </a>
                                 </div>

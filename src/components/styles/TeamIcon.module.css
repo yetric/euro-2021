@@ -5,7 +5,7 @@
 
 .flag {
     height: auto;
-    margin-right: 4px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 .small {

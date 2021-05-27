@@ -10,7 +10,7 @@ import {
     median,
     sortObjectByKeyName
 } from "../utils/core";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 interface TeamStatsProps {
     team: Player[];

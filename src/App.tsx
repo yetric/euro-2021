@@ -13,6 +13,7 @@ import { PlayerView } from "./views/PlayerView";
 import { VenuesListView } from "views/VenuesListView";
 import { LoginView } from "views/LoginView";
 import { AuthProvider } from "providers/AuthProvider";
+import { TipsView } from "./views/TipsView";
 
 function App() {
     useLoadGroups();
@@ -26,6 +27,7 @@ function App() {
                     <Switch>
                         <Route exact path="/" component={StartView} />
                         <Route exact path="/login" component={LoginView} />
+                        <Route exact path="/tips" component={TipsView} />
                         <Route exact path="/group/:groupId" component={GroupView} />
                         <Route exact path="/team/:teamId" component={TeamView} />
                         <Route exact path="/venues" component={VenuesListView} />

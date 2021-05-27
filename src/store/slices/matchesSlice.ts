@@ -85,4 +85,23 @@ export const getTeamMatchesSelector = (code: string) =>
         return roundGames;
     });
 
+export const getAllMatches = () =>
+    createSelector([matchStateSelector], (matchesState) => {
+        return _.orderBy(matchesState.matches, ["matchDayRoundNr", "matchDate"], ["asc", "asc"]);
+    });
+
+export const getUserBets = () =>
+    createSelector([matchStateSelector], (matchesState) => {
+        let matches = _.orderBy(
+            matchesState.matches,
+            ["matchDayRoundNr", "matchDate"],
+            ["asc", "asc"]
+        );
+        // TODO - get this from backend with userId?
+        let bets: any = {};
+        matches.forEach((match: Match) => {
+            bets[match.id] = [0, 0];
+        });
+        return bets;
+    });
 export default matchesSlice.reducer;
