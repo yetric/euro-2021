@@ -2,12 +2,12 @@ import { TeamIcon } from "./TeamIcon";
 import { Match } from "../store/models";
 import styles from "./styles/BetOnGame.module.css";
 import { useEffect, useState } from "react";
-import { isValidNumber } from "../utils/core";
+import clsx from "clsx";
 
 interface CallbackProps {
     home: number;
     away: number;
-    gameId: number;
+    gameId: string;
 }
 
 interface BetOnGameProps {
@@ -28,10 +28,17 @@ export const BetOnGame = ({
 
     useEffect(() => {
         if (dirty.every((item) => item)) {
-            console.log(home, away, game.id);
+            onChange({
+                gameId: game.id,
+                away,
+                home
+            });
         }
     }, [dirty]);
 
+    const bettingCls = clsx(styles.bet, {
+        [styles.done]: dirty.every((item) => item)
+    });
     return (
         <div className={styles.wrap}>
             <div className={styles.game}>
@@ -48,13 +55,16 @@ export const BetOnGame = ({
                     {game.id} {game.venue.name}
                 </p>
             </div>
-            <div className={styles.bet}>
+            <div className={bettingCls}>
                 <input
                     className={styles.input}
                     inputMode="numeric"
                     type={"number"}
                     pattern="[0-9]*"
                     value={home ?? ""}
+                    onFocus={() => {
+                        setDirty([false, dirty[1]]);
+                    }}
                     onChange={(event) => {
                         setHome(parseInt(event.target.value));
                     }}
@@ -74,6 +84,9 @@ export const BetOnGame = ({
                     }}
                     onBlur={(event) => {
                         setDirty([dirty[0], true]);
+                    }}
+                    onFocus={(event) => {
+                        setDirty([dirty[0], false]);
                     }}
                 />
             </div>

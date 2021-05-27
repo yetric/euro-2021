@@ -7,7 +7,7 @@ import { Match } from "../store/models";
 interface BettingProps {
     home: number;
     away: number;
-    gameId: number;
+    gameId: string;
 }
 
 export const TipsView = () => {

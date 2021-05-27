@@ -44,3 +44,8 @@
     margin: 3px 0 0 0;
     color: #737373;
 }
+
+.done .input {
+    border-color: transparent;
+    color: green;
+}
