@@ -61,12 +61,15 @@ export const BetOnGame = ({
                     inputMode="numeric"
                     type={"number"}
                     pattern="[0-9]*"
+                    size={1}
+                    maxLength={1}
                     value={home ?? ""}
                     onFocus={() => {
                         setDirty([false, dirty[1]]);
                     }}
                     onChange={(event) => {
-                        setHome(parseInt(event.target.value));
+                        let val = parseInt(event.target.value, 10);
+                        setHome(Math.abs(val));
                     }}
                     onBlur={(event) => {
                         setDirty([true, dirty[1]]);
@@ -79,8 +82,12 @@ export const BetOnGame = ({
                     type={"number"}
                     pattern="[0-9]*"
                     value={away ?? ""}
+                    size={1}
+                    maxLength={1}
                     onChange={(event) => {
-                        setAway(parseInt(event.target.value));
+                        let val = Math.abs(parseInt(event.target.value.replace(/^0+/, ""), 10));
+                        val = +val;
+                        setAway(val);
                     }}
                     onBlur={(event) => {
                         setDirty([dirty[0], true]);
