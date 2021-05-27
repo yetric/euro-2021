@@ -13,30 +13,25 @@ interface CallbackProps {
 interface BetOnGameProps {
     game: Match;
     onChange: (props: CallbackProps) => void;
-    betHome?: number | null;
-    betAway?: number | null;
+    betHome?: number;
+    betAway?: number;
 }
 export const BetOnGame = ({
     game,
     onChange,
-    betAway = null,
-    betHome = null
+    betAway = 0,
+    betHome = 0
 }: BetOnGameProps): JSX.Element => {
-    const [home, setHome] = useState<number | null>(betHome);
-    const [away, setAway] = useState<number | null>(betAway);
+    const [home, setHome] = useState<number>(betHome);
+    const [away, setAway] = useState<number>(betAway);
+    const [dirty, setDirty] = useState<boolean[]>([false, false]);
 
     useEffect(() => {
-        if (!home || !away) {
-            return;
+        if (dirty.every((item) => item)) {
+            console.log(home, away, game.id);
         }
-        if (isValidNumber(home) && isValidNumber(away)) {
-            onChange({
-                home,
-                away,
-                gameId: parseInt(game.id)
-            });
-        }
-    }, [home, away]);
+    }, [dirty]);
+
     return (
         <div className={styles.wrap}>
             <div className={styles.game}>
@@ -63,6 +58,9 @@ export const BetOnGame = ({
                     onChange={(event) => {
                         setHome(parseInt(event.target.value));
                     }}
+                    onBlur={(event) => {
+                        setDirty([true, dirty[1]]);
+                    }}
                 />{" "}
                 -{" "}
                 <input
@@ -73,6 +71,9 @@ export const BetOnGame = ({
                     value={away ?? ""}
                     onChange={(event) => {
                         setAway(parseInt(event.target.value));
+                    }}
+                    onBlur={(event) => {
+                        setDirty([dirty[0], true]);
                     }}
                 />
             </div>

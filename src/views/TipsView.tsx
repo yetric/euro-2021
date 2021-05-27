@@ -20,7 +20,7 @@ export const TipsView = () => {
     };
 
     useEffect(() => {
-        // console.log(betting);
+        console.log(betting);
     }, [betting]);
 
     return (
