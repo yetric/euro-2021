@@ -120,7 +120,11 @@ taskkill /PID <pid> /F
 cd projekt/tools
 npm install
 ```
-
+- Create an .env file in /tools `project/tools/.env` with the following settings
+    ```
+    FIRESTORE_EMULATOR_HOST=localhost:8080
+    FIREBASE_AUTH_EMULATOR_HOST=localhost:5001
+    ``` 
 - Obtain a serviceAccount.json file if you dont ready have one, it should look something like this:
     The serviceAccount.json contains sensitive information and must therefore never be committed to vcs.
     Place the serviceAccount.json in the tools-folder.
