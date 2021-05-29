@@ -3,6 +3,8 @@ const dotenv = require("dotenv");
 const admin = require("firebase-admin");
 const serviceAccount = require("./serviceAccount.json");
 
+const venues = require('./data/venues.json');
+
 // Start Environment
 const environment = process.argv[2] ? process.argv[2] : "localhost";
 if (environment !== "live" && environment !== "localhost") {
@@ -54,25 +56,8 @@ const getEuroData = async () => {
             };
         });
     });
-    const venueIDs = matches.map((m) => m.venue);
-    const venuesUniqueIds = [...new Set(venueIDs)];
-    console.log(venuesUniqueIds);
-
-    const fetchVenue = async (id) => {
-        const r = await statorium.getVenueById(id);
-        return {
-            id: r.data.venue.id,
-            name: r.data.venue.venueName,
-            city: r.data.venue.venueCity,
-            capacity: r.data.venue.additionalInfo.capacity,
-            opened: r.data.venue.additionalInfo.opened,
-            geolocation: { lng: r.data.venue.venueCoordX, lat: r.data.venue.venueCoordY },
-            photo: r.data.venue.photo
-        };
-    };
-
-    const venuesPromises = venuesUniqueIds.map((v) => fetchVenue(v));
-    const venues = await Promise.all(venuesPromises);
+    // const venueIDs = matches.map((m) => m.venue);
+    // const venuesUniqueIds = [...new Set(venueIDs)];
 
     const fetchTeam = async (id) => {
         const r = await statorium.getTeamById(id);
@@ -87,7 +72,7 @@ const getEuroData = async () => {
     const allTeamPromises = groups.flatMap((g) => g.teamIds.map((t) => fetchTeam(t)));
     const teams = await Promise.all(allTeamPromises);
 
-    return { groups, teams, matches, venues };
+    return { groups, teams, matches };
 };
 
 getEuroData().then((data) => {
@@ -109,7 +94,7 @@ getEuroData().then((data) => {
     // build venue lookup
     const venueLookup = Object.assign(
       {},
-      ...data.venues.map((v) => ({ [v.id]: { id: v.id, name: v.name, city: v.city } }))
+      ...venues.map((v) => ({ [v.id]: { id: v.id, name: v.name, city: v.city, country: v.country } }))
     );
 
 
@@ -128,7 +113,7 @@ getEuroData().then((data) => {
 
     // Venues data
     const venuesCollection = db.collection("venues");
-    data.venues.map((venue) => {
+    venues.map((venue) => {
         let newDoc = venuesCollection.doc(venue.id);
         batch.set(newDoc, venue);
         return true;

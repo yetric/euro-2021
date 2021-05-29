@@ -43,6 +43,7 @@ export interface Player {
 
 export interface VenueShort {
     id: string;
+    country: string;
     name: string;
     city: string;
 }
@@ -72,9 +73,10 @@ export interface Match {
 
 export interface Venue {
     id: string;
+    country: string;
     name: string;
     city: string;
-    capacity: string;
+    capacity: number;
     opened: string;
     geolocation: { lng: string; lat: string };
     photo: string;

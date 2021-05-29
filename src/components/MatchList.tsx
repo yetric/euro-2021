@@ -52,7 +52,7 @@ export const MatchList = (props: MatchListProps): JSX.Element => {
                                 <Col className={"text-center"}>
                                     <small>
                                         <Link to={"/venues/" + match.venue.id}>
-                                            {match.venue.name}
+                                            {match.venue.name}, {match.venue.city}
                                         </Link>
                                     </small>
                                 </Col>

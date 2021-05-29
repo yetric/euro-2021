@@ -1,0 +1,145 @@
+[
+ {
+  "id": "128",
+  "country": "ITA",
+  "name": "Stadio Olimpico",
+  "city": "Rome",
+  "capacity": 72698,
+  "opened": "1937",
+  "geolocation": {
+   "lat": 41.9280513,
+   "lng": 12.4557984
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl15659406181026.jpg"
+ },
+ {
+  "id": "414",
+  "country": "AZE",
+  "name": "Baku Olympic Stadium",
+  "city": "Baku",
+  "capacity": 68700,
+  "opened": "2015",
+  "geolocation": {
+   "lat": 40.4172504,
+   "lng": 49.90886620000001
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl15786618671124.jpg"
+ },
+ {
+  "id": "179",
+  "country": "DNK",
+  "name": "Parken Stadium",
+  "city": "Copenhagen",
+  "capacity": 38065,
+  "opened": "1992",
+  "geolocation": {
+   "lat": 55.702299,
+   "lng": 12.5715559
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl15677989832596.jpg"
+ },
+ {
+  "id": "170",
+  "country": "RUS",
+  "name": "Gazprom Arena",
+  "city": "Saint Petersburg",
+  "capacity": 64468,
+  "opened": "2017",
+  "geolocation": {
+   "lat": 59.9730865,
+   "lng": 30.2201913
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl15671671892519.jpg"
+ },
+ {
+  "id": "21",
+  "country": "ENG",
+  "name": "Wembley Stadium",
+  "city": "London",
+  "capacity": 90000,
+  "opened": "2007",
+  "geolocation": {
+   "lat": 51.5566938,
+   "lng": -0.2796424
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl15659452392672.jpg"
+ },
+ {
+  "id": "416",
+  "country": "ROM",
+  "name": "Arena Națională",
+  "city": "Bucharest",
+  "capacity": 55634,
+  "opened": "2011",
+  "geolocation": {
+   "lat": 44.4348235,
+   "lng": 26.1515292
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl15786614241779.png"
+ },
+ {
+  "id": "174",
+  "country": "NLD",
+  "name": "Johan Cruijff Arena",
+  "city": "Amsterdam",
+  "capacity": 54990,
+  "opened": "1996",
+  "geolocation": {
+   "lat": 52.3142828,
+   "lng": 4.9407865
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl15671879961689.jpg"
+ },
+ {
+  "id": "417",
+  "country": "SCO",
+  "name": "Hampden Park",
+  "city": "Glasgow",
+  "capacity": 51866,
+  "opened": "1903",
+  "geolocation": {
+   "lat": 55.8266331,
+   "lng": -4.2526278
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl1578662087299.jpg"
+ },
+ {
+  "id": "746",
+  "country": "ESP",
+  "name": "Estadio de La Cartuja",
+  "city": "Seville",
+  "capacity": 60000,
+  "opened": "1999",
+  "geolocation": {
+   "lat": 37.398611,
+   "lng": -6.007222
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl16043155471751.jpg"
+ },
+ {
+  "id": "415",
+  "country": "HUN",
+  "name": "Puskás Aréna",
+  "city": "Budapest",
+  "capacity": 67215,
+  "opened": "2019",
+  "geolocation": {
+   "lat": 47.50386,
+   "lng": 19.09197
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl1578662246281.jpg"
+ },
+ {
+  "id": "44",
+  "country": "DEU",
+  "name": "Allianz Arena",
+  "city": "Munich",
+  "capacity": 75000,
+  "opened": "2005",
+  "geolocation": {
+   "lat": 48.21847959999999,
+   "lng": 11.624199
+  },
+  "photo": "https://api.statorium.com/media/bearleague/bl1564744234282.jpg"
+ }
+]

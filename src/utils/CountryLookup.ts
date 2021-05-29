@@ -28,6 +28,9 @@ import pt from "svg-country-flags/png100px/pt.png";
 import fr from "svg-country-flags/png100px/fr.png";
 import de from "svg-country-flags/png100px/de.png";
 
+import ro from "svg-country-flags/png100px/ro.png";
+import az from "svg-country-flags/png100px/az.png";
+
 export enum Country {
     Turkey = "TUR",
     Italy = "ITA",
@@ -57,7 +60,10 @@ export enum Country {
     Hungary = "HUN",
     Portugal = "PRT",
     France = "FRA",
-    Germany = "DEU"
+    Germany = "DEU",
+
+    Romania = "ROU",
+    Azerbaijan = "AZE"
 }
 
 export const Flags: any = {
@@ -89,39 +95,43 @@ export const Flags: any = {
     [Country.Hungary]: hu,
     [Country.Portugal]: pt,
     [Country.France]: fr,
-    [Country.Germany]: de
+    [Country.Germany]: de,
+
+    [Country.Romania]: ro,
+    [Country.Azerbaijan]: az
 };
 
 export const CountryAlpha2: any = {
-    "TUR": "TR",
-    "ITA": "IT",
-    "WAL": "GB-WLS",
-    "CHE": "CH",
-    "DNK": "DK",
-    "FIN": "FI",
-    "BEL": "BE",
-    "RUS": "RU",
-    "NLD": "NL",
-    "UKR": "UA",
-    "AUT": "AT",
-    "MKD": "MK",
-    "ENG": "GB-ENG",
-    "HRV": "HR",
-    "SCO": "GB-SCT",
-    "CZE": "CZ",
-    "ESP": "ES",
-    "SWE": "SE",
-    "POL": "PL",
-    "SVK": "SK",
-    "HUN": "HU",
-    "PRT": "PT",
-    "FRA": "FR",
-    "DEU": "DE",
-
-}
+    TUR: "TR",
+    ITA: "IT",
+    WAL: "GB-WLS",
+    CHE: "CH",
+    DNK: "DK",
+    FIN: "FI",
+    BEL: "BE",
+    RUS: "RU",
+    NLD: "NL",
+    UKR: "UA",
+    AUT: "AT",
+    MKD: "MK",
+    ENG: "GB-ENG",
+    HRV: "HR",
+    SCO: "GB-SCT",
+    CZE: "CZ",
+    ESP: "ES",
+    SWE: "SE",
+    POL: "PL",
+    SVK: "SK",
+    HUN: "HU",
+    PRT: "PT",
+    FRA: "FR",
+    DEU: "DE",
+    ROU: "RO",
+    AZE: "AZ"
+};
 
 export const CountryLookup: any = {
     getFlag(code: string) {
         return Flags[code] ?? "";
     }
-}
+};

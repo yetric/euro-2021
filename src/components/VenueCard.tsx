@@ -3,6 +3,7 @@ import { Venue } from "store/models";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import styles from "components/styles/GroupCard.module.css";
 import { Link } from "react-router-dom";
+import { TeamIcon } from "components/TeamIcon";
 
 interface VenueCardProps {
     venue: Venue;
