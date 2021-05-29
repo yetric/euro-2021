@@ -4,6 +4,7 @@ import { BetOnGame } from "../components/BetOnGame";
 import { useEffect, useState } from "react";
 import { Match } from "../store/models";
 import { Button, ProgressBar } from "react-bootstrap";
+import { FormSteps } from "../components/FormSteps";
 
 interface BettingProps {
     home: number;
@@ -41,6 +42,20 @@ export const TipsView = () => {
         <div>
             <h1 className={"h3"}>Bet on Results in Euro 2020</h1>
 
+            <p className={"lead"}>You got invited by <strong>[name]</strong> to be part of <strong>[team]</strong> and bet on Euro 2020</p>
+
+            <FormSteps steps={[
+                {
+                    label: "Group Games",
+                    active: true
+                },
+                {
+                    label: "Top Scorers"
+                },
+                {
+                    label: "Champions"
+                }
+            ]} />
 
             {!isNaN(percentageDone) && <ProgressBar style={{
                 height: "32px"
