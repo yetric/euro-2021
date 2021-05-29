@@ -16,7 +16,7 @@ export const VenuesListView = () => {
     return (
         <>
             <Helmet>
-                <title>Venues</title>
+                <title>Venues - Euro 2020 (2021) - Fotbollsfeber.se</title>
             </Helmet>
             <h2>Venues</h2>
             <Row>
