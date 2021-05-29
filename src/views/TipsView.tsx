@@ -31,7 +31,9 @@ export const TipsView = () => {
         <div>
             <h1 className={"h3"}>Bet on Results in Euro 2020</h1>
 
-            <p><ProgressBar now={percentageDone} label={`${percentageDoneRounded}%  `} /></p>
+            {!isNaN(percentageDone) && <ProgressBar style={{
+                height: "32px"
+            }} now={percentageDone} label={`${percentageDoneRounded}%  `} />}
 
             {games.map((game: Match, index: number) => {
                 return (
