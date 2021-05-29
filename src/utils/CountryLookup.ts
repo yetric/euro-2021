@@ -62,7 +62,7 @@ export enum Country {
     France = "FRA",
     Germany = "DEU",
 
-    Romania = "ROU",
+    Romania = "ROM",
     Azerbaijan = "AZE"
 }
 
@@ -98,7 +98,8 @@ export const Flags: any = {
     [Country.Germany]: de,
 
     [Country.Romania]: ro,
-    [Country.Azerbaijan]: az
+    [Country.Azerbaijan]: az,
+    [Country.Romania]: ro
 };
 
 export const CountryAlpha2: any = {
