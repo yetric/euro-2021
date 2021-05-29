@@ -24,6 +24,10 @@ export const BetOnGame = ({
 }: BetOnGameProps): JSX.Element => {
     const [home, setHome] = useState<number>(betHome);
     const [away, setAway] = useState<number>(betAway);
+
+    const [cachedHome, setCachedHome] = useState<number>(0);
+    const [cachedAway, setCachedAway] = useState<number>(0);
+
     const [dirty, setDirty] = useState<boolean[]>([false, false]);
 
     useEffect(() => {
@@ -66,7 +70,8 @@ export const BetOnGame = ({
                     value={home >= 0 ? home : ""}
                     onFocus={() => {
                         setDirty([false, dirty[1]]);
-                        setHome(-1)
+                        setCachedHome(home);
+                        setHome(-1);
                     }}
                     onChange={(event) => {
                         let val = parseInt(event.target.value, 10);
@@ -74,6 +79,9 @@ export const BetOnGame = ({
                     }}
                     onBlur={(event) => {
                         setDirty([true, dirty[1]]);
+                        if (home === -1) {
+                            setHome(cachedHome);
+                        }
                     }}
                 />{" "}
                 -{" "}
@@ -92,9 +100,13 @@ export const BetOnGame = ({
                     }}
                     onBlur={(event) => {
                         setDirty([dirty[0], true]);
+                        if (away === -1) {
+                            setAway(cachedAway);
+                        }
                     }}
                     onFocus={(event) => {
                         setDirty([dirty[0], false]);
+                        setCachedAway(away)
                         setAway(-1)
                     }}
                 />
