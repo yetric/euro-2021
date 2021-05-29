@@ -24,7 +24,7 @@ export const VenueCard = ({ venue }: VenueCardProps): JSX.Element => {
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                     <ListGroupItem className={styles.item}>
-                        {venue.city} <TeamIcon size={"medium"} team={venue.country} />{" "}
+                        <TeamIcon size={"small"} team={venue.country} /> {venue.city}
                     </ListGroupItem>
                     <ListGroupItem className={styles.item}>
                         Capacity: {venue.capacity.toLocaleString("sv-se")}
