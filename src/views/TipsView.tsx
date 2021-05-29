@@ -3,6 +3,7 @@ import { getAllMatches, getUserBets } from "../store/slices/matchesSlice";
 import { BetOnGame } from "../components/BetOnGame";
 import { useEffect, useState } from "react";
 import { Match } from "../store/models";
+import { ProgressBar } from "react-bootstrap";
 
 interface BettingProps {
     home: number;
@@ -23,11 +24,14 @@ export const TipsView = () => {
         console.log(betting);
     }, [betting]);
 
+    const percentageDone = (Object.entries(betting).length / games.length) * 100;
+    const percentageDoneRounded = Math.round(percentageDone * 10) / 10;
+
     return (
         <div>
             <h1 className={"h3"}>Bet on Results in Euro 2020</h1>
 
-            <p>{JSON.stringify(bets)}</p>
+            <p><ProgressBar now={percentageDone} label={`${percentageDoneRounded}%  `} /></p>
 
             {games.map((game: Match, index: number) => {
                 return (
