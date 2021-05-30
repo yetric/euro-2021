@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllMatches, getUserBets } from "../store/slices/matchesSlice";
 import { BetOnGame } from "../components/BetOnGame";
 import { useEffect, useState } from "react";
 import { Match } from "../store/models";
 import { Button, ProgressBar } from "react-bootstrap";
 import { FormSteps } from "../components/FormSteps";
+import { updateBet } from "store/slices/betsSlice";
 
 interface BettingProps {
     home: number;
@@ -12,23 +13,20 @@ interface BettingProps {
     gameId: string;
 }
 
-const randomInt = (min: number, max: number) =>  Math.floor(Math.random() * (max - min + 1) + min)
+const randomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
 
 export const TipsView = () => {
+    const dispatch = useDispatch();
     const games = useSelector(getAllMatches()); // Games sorted on date to bet on
     const bets = useSelector(getUserBets()); // The users existing bets
     const [betting, setBetting] = useState({}); // Handle state for current editing of bets
 
     const onBetting = ({ home, away, gameId }: BettingProps) => {
-        // TODO: Move this state to Redux (Erik)
         setBetting({ ...betting, ...{ [gameId]: [home, away] } });
     };
 
     useEffect(() => {
-        console.log(betting);
-        // TODO: 1. Set betting struct to LocalStorage
-
-        // TODO: 2. On commit - make betting persistent
+        dispatch(updateBet(betting));
     }, [betting]);
 
     const percentageDone = (Object.entries(betting).length / games.length) * 100;
@@ -36,9 +34,9 @@ export const TipsView = () => {
 
     const randomize = () => {
         games.forEach((game: Match) => {
-            const home = randomInt(0,3);
-            const away = randomInt(0,3);
-            bets[game.id] = [home, away]
+            const home = randomInt(0, 3);
+            const away = randomInt(0, 3);
+            bets[game.id] = [home, away];
         });
     };
 
@@ -46,30 +44,46 @@ export const TipsView = () => {
         <div>
             <h1 className={"h3"}>Bet on Results in Euro 2020</h1>
 
-            <p className={"lead"}>You got invited by <strong>[name]</strong> to be part of <strong>[team]</strong> and bet on Euro 2020</p>
+            <p className={"lead"}>
+                You got invited by <strong>[name]</strong> to be part of <strong>[team]</strong> and
+                bet on Euro 2020
+            </p>
 
-            <FormSteps steps={[
-                {
-                    label: "Group Games",
-                    active: true
-                },
-                {
-                    label: "Top Scorers"
-                },
-                {
-                    label: "Champions"
-                }
-            ]} />
+            <FormSteps
+                steps={[
+                    {
+                        label: "Group Games",
+                        active: true
+                    },
+                    {
+                        label: "Top Scorers"
+                    },
+                    {
+                        label: "Champions"
+                    }
+                ]}
+            />
 
-            {!isNaN(percentageDone) && <ProgressBar style={{
-                height: "32px"
-            }} now={percentageDone} label={`${percentageDoneRounded}%  `} />}
+            {!isNaN(percentageDone) && (
+                <ProgressBar
+                    style={{
+                        height: "32px"
+                    }}
+                    now={percentageDone}
+                    label={`${percentageDoneRounded}%  `}
+                />
+            )}
 
             <p className={"mt-3"}>
-                <Button size={"sm"} variant={"outline-danger"} onClick={(event) => {
-                    event.preventDefault();
-                    randomize();
-            }}>Randomize</Button>
+                <Button
+                    size={"sm"}
+                    variant={"outline-danger"}
+                    onClick={(event) => {
+                        event.preventDefault();
+                        randomize();
+                    }}>
+                    Randomize
+                </Button>
             </p>
 
             {games.map((game: Match, index: number) => {

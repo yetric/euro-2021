@@ -1,3 +1,12 @@
+export interface League {
+    id: string;
+    name: string;
+    owner: User;
+    maxCompetitors: number;
+    createdAt: number;
+}
+
+
 export interface User {
     uid: string;
     email: string;

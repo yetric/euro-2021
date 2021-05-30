@@ -26,7 +26,7 @@ export const groupsSlice = createSlice({
         updating: (state) => {
             state.isLoading = true;
             state.error = "";
-            state.isLoading = false;
+            state.hasError = false;
         },
         hasError: (state, action: PayloadAction<string>) => {
             state.hasError = true;
