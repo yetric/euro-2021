@@ -15,16 +15,20 @@ interface BettingProps {
 const randomInt = (min: number, max: number) =>  Math.floor(Math.random() * (max - min + 1) + min)
 
 export const TipsView = () => {
-    const games = useSelector(getAllMatches());
-    const bets = useSelector(getUserBets());
-    const [betting, setBetting] = useState({});
+    const games = useSelector(getAllMatches()); // Games sorted on date to bet on
+    const bets = useSelector(getUserBets()); // The users existing bets
+    const [betting, setBetting] = useState({}); // Handle state for current editing of bets
 
     const onBetting = ({ home, away, gameId }: BettingProps) => {
+        // TODO: Move this state to Redux (Erik)
         setBetting({ ...betting, ...{ [gameId]: [home, away] } });
     };
 
     useEffect(() => {
         console.log(betting);
+        // TODO: 1. Set betting struct to LocalStorage
+
+        // TODO: 2. On commit - make betting persistent
     }, [betting]);
 
     const percentageDone = (Object.entries(betting).length / games.length) * 100;
