@@ -1,54 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getAllMatches, getUserBets } from "../store/slices/matchesSlice";
-import { BetOnGame } from "../components/BetOnGame";
-import { useEffect, useState } from "react";
-import { Match } from "../store/models";
-import { Button, ProgressBar } from "react-bootstrap";
-import { FormSteps } from "../components/FormSteps";
-import { updateBet } from "store/slices/betsSlice";
+import { BetOnGame } from "components/BetOnGame";
+import { BetGame, getLeagueGameBets } from "store/selectors";
+import { betsStateSelector, updateBetMatch } from "store/slices/betsSlice";
+import { matchStateSelector } from "store/slices/matchesSlice";
+import { ProgressBar } from "react-bootstrap";
+import { FormSteps } from "components/FormSteps";
 
-interface BettingProps {
+export interface BettingProps {
     home: number;
     away: number;
     gameId: string;
 }
 
-const randomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1) + min);
-
 export const TipsView = () => {
     const dispatch = useDispatch();
-    const games = useSelector(getAllMatches()); // Games sorted on date to bet on
-    const bets = useSelector(getUserBets()); // The users existing bets
-    const [betting, setBetting] = useState({}); // Handle state for current editing of bets
+    const betGames = useSelector(getLeagueGameBets());
+    const betState = useSelector(betsStateSelector);
+    const matchesState = useSelector(matchStateSelector);
 
-    const onBetting = ({ home, away, gameId }: BettingProps) => {
-        setBetting({ ...betting, ...{ [gameId]: [home, away] } });
-    };
+    if (matchesState.isLoading || betState.isLoading) return <>Loading</>;
 
-    useEffect(() => {
-        dispatch(updateBet(betting));
-    }, [betting]);
-
-    const percentageDone = (Object.entries(betting).length / games.length) * 100;
-    const percentageDoneRounded = Math.round(percentageDone * 10) / 10;
-
-    const randomize = () => {
-        games.forEach((game: Match) => {
-            const home = randomInt(0, 3);
-            const away = randomInt(0, 3);
-            bets[game.id] = [home, away];
-        });
+    const onBettingChange = (param: BettingProps) => {
+        dispatch(updateBetMatch(param));
     };
 
     return (
         <div>
-            <h1 className={"h3"}>Bet on Results in Euro 2020</h1>
-
-            <p className={"lead"}>
-                You got invited by <strong>[name]</strong> to be part of <strong>[team]</strong> and
-                bet on Euro 2020
-            </p>
-
             <FormSteps
                 steps={[
                     {
@@ -64,36 +41,22 @@ export const TipsView = () => {
                 ]}
             />
 
-            {!isNaN(percentageDone) && (
-                <ProgressBar
-                    style={{
-                        height: "32px"
-                    }}
-                    now={percentageDone}
-                    label={`${percentageDoneRounded}%  `}
-                />
-            )}
+            <ProgressBar
+                style={{
+                    height: "32px"
+                }}
+                now={0}
+                label={`0%`}
+            />
 
-            <p className={"mt-3"}>
-                <Button
-                    size={"sm"}
-                    variant={"outline-danger"}
-                    onClick={(event) => {
-                        event.preventDefault();
-                        randomize();
-                    }}>
-                    Randomize
-                </Button>
-            </p>
-
-            {games.map((game: Match, index: number) => {
+            {betGames.map((betGame: BetGame, index: number) => {
                 return (
                     <BetOnGame
                         key={`bet-match-${index}`}
-                        betAway={bets[game.id][0] ?? 0}
-                        betHome={bets[game.id][1] ?? 0}
-                        onChange={onBetting}
-                        game={game}
+                        betAway={betGame.away}
+                        betHome={betGame.home}
+                        onChange={(props) => onBettingChange(props)}
+                        game={betGame.game}
                     />
                 );
             })}

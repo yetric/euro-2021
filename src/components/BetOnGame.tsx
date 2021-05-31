@@ -1,10 +1,10 @@
 import { TeamIcon } from "./TeamIcon";
-import { Match } from "../store/models";
+import { Match } from "store/models";
 import styles from "./styles/BetOnGame.module.css";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
 
-interface CallbackProps {
+interface BetOnGameCallbackProps {
     home: number;
     away: number;
     gameId: string;
@@ -12,7 +12,7 @@ interface CallbackProps {
 
 interface BetOnGameProps {
     game: Match;
-    onChange: (props: CallbackProps) => void;
+    onChange: (props: BetOnGameCallbackProps) => void;
     betHome?: number;
     betAway?: number;
 }
@@ -106,8 +106,8 @@ export const BetOnGame = ({
                     }}
                     onFocus={(event) => {
                         setDirty([dirty[0], false]);
-                        setCachedAway(away)
-                        setAway(-1)
+                        setCachedAway(away);
+                        setAway(-1);
                     }}
                 />
             </div>
