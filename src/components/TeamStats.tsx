@@ -27,7 +27,7 @@ const createChartStruct = (distribution: any, label: string) => {
             {
                 label,
                 data,
-                backgroundColor: "#80CBC4"
+                backgroundColor: "rgb(45,182,201)"
             }
         ]
     };
