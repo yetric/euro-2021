@@ -1,5 +1,15 @@
 # EURO 2021 - fotbollsfeber
 
+## When all is installed:
+
+```
+firebase emulators:start
+cd tools
+node importData.js
+cd ..
+npm run start
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Prerequisites
