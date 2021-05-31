@@ -25,7 +25,7 @@ export const LandingPage = () => {
                     </p>
                 </Col>
                 <Col md={5}>
-                    <Card>
+                    <Card className={styles.card}>
                         <Card.Body>
                             <Card.Title>Skapa konto</Card.Title>
                             <Card.Text>
@@ -47,7 +47,7 @@ export const LandingPage = () => {
                                     <IoCheckmarkSharp /> Win the stuff
                                 </li>
                             </ul>
-                            <Button variant={"success"} block={true} onClick={() => toSignup()}>
+                            <Button variant={"outline-light"} block={true} onClick={() => toSignup()}>
                                 <IoFootball /> Skapa konto
                             </Button>
                         </Card.Body>

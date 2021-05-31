@@ -8,9 +8,13 @@
 }
 
 .features li {
-    color: #37474f;
+    font-size: 14px;
 }
 
 .features li svg {
-    color: #388e3c;
+    color: #c6ee8f;
+}
+
+.card {
+    background-color: rgb(33, 138, 153);
 }
