@@ -3,7 +3,7 @@ import { BetOnGame } from "components/BetOnGame";
 import { BetGame, getLeagueGameBets } from "store/selectors";
 import { betsStateSelector, updateBetMatch } from "store/slices/betsSlice";
 import { matchStateSelector } from "store/slices/matchesSlice";
-import { ProgressBar } from "react-bootstrap";
+import { Col, ProgressBar, Row } from "react-bootstrap";
 import { FormSteps } from "components/FormSteps";
 
 export interface BettingProps {
@@ -49,17 +49,25 @@ export const TipsView = () => {
                 label={`0%`}
             />
 
-            {betGames.map((betGame: BetGame, index: number) => {
-                return (
-                    <BetOnGame
-                        key={`bet-match-${index}`}
-                        betAway={betGame.away}
-                        betHome={betGame.home}
-                        onChange={(props) => onBettingChange(props)}
-                        game={betGame.game}
-                    />
-                );
-            })}
+            <Row className={"mt-3 mb-3"}>
+                <Col md={4}>
+                    <p>FILTERS: SORT BY DATE - SORT BY GROUP</p>
+                    {betGames.map((betGame: BetGame, index: number) => {
+                        return (
+                            <BetOnGame
+                                key={`bet-match-${index}`}
+                                betAway={betGame.away}
+                                betHome={betGame.home}
+                                onChange={(props) => onBettingChange(props)}
+                                game={betGame.game}
+                            />
+                        );
+                    })}
+                </Col>
+                <Col md={8}>
+                    SHOW STANDINGS BASED ON USER BETS
+                </Col>
+            </Row>
         </div>
     );
 };
